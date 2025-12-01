@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './components/layout/Header'
 import Hero from './components/hero/Hero'
-import ProjectsGrid from './components/projects/ProjectsGrid'
+import ProjectsGrid from './components/projects/ProjectsCarousel'
 import Contact from './components/contact/Contact'
 import Footer from './components/layout/Footer'
 
