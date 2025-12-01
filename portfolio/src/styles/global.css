@@ -1,0 +1,270 @@
+/* ============================= */
+/* GLOBAL VARIABLES & RESET      */
+/* ============================= */
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#9aa4b2;
+  --text:#e6eef6;
+  --accent:#6366f1;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html, body, #root{
+  height:100%;
+}
+
+body{
+  background:linear-gradient(180deg,#071224 0%, #0f1724 100%);
+  color:var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* APP ROOT */
+.app-root{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ============================= */
+/* HEADER                        */
+/* ============================= */
+.site-header{
+  padding:18px 32px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+}
+
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  font-weight:700;
+  font-size:18px;
+}
+
+.nav{
+  display:flex;
+  gap:16px;
+}
+
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+}
+.nav a:hover{
+  color:var(--text);
+}
+
+/* ============================= */
+/* GENERAL CONTAINER             */
+/* ============================= */
+.container{
+  width:min(1100px, 92%);
+  margin:0 auto;
+}
+
+/* ============================= */
+/* HERO SECTION                  */
+/* ============================= */
+.hero{
+  padding:64px 0 140px 0; /* espaço para o marquee */
+  position:relative;
+  overflow:hidden;
+  z-index:1; /* base do hero */
+}
+
+.hero-inner{
+  display:flex;
+  gap:36px;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+  z-index:2; /* sempre acima das waves */
+}
+
+.hero-copy{
+  max-width:640px;
+}
+
+.hero h1{
+  font-size:clamp(28px, 4.5vw, 48px);
+  margin-bottom:12px;
+}
+
+.hero {
+  position: relative;
+  padding-bottom: 94px; /* espaço EXATO para a waves */
+  overflow: visible;
+  z-index: 1;
+}
+
+.cta{
+  display:inline-block;
+  background:var(--accent);
+  color:white;
+  padding:12px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+}
+.cta.secondary{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--muted);
+}
+
+/* ============================= */
+/* PROFILE IMAGE                 */
+/* ============================= */
+.profile-img{
+  width:240px;
+  height:240px;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:top; /* evita ficar pra baixo */
+  border:4px solid rgba(78, 3, 121, 0.1);
+  box-shadow:0 0 25px rgba(0,0,0,0.3);
+  position:relative;
+  z-index:3;
+}
+
+/* ============================= */
+/* WAVES (fundo decorativo)      */
+/* ============================= */
+.waves{
+  position:absolute;
+  right:-5%;
+  bottom:-5%;
+  width:150%;
+  opacity:0.12;
+  pointer-events:none;
+  animation: waveSlide 12s ease-in-out infinite;
+  z-index:0;
+}
+
+/* ondas flutuando */
+@keyframes waveSlide {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(30px); }
+  100% { transform: translateX(0); }
+}
+/* ============================= */
+/* TECH MARQUEE (barra animada)  */
+/* ============================= */
+.tech-marquee-wrapper{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  overflow:hidden;
+  background:rgba(255,255,255,0.02);
+  padding:18px 0;
+}
+
+/* ============================= */
+/* PROJECTS SECTION              */
+/* ============================= */
+.projects{
+  padding:48px 0;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+.card h3{
+  margin-bottom:8px;
+  font-size:18px;
+}
+
+.tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:12px;
+}
+
+.tag{
+  font-size:12px;
+  color:var(--muted);
+  background:rgba(255,255,255,0.02);
+  padding:6px 8px;
+  border-radius:999px;
+}
+
+/* ============================= */
+/* CONTACT FORM                  */
+/* ============================= */
+.contact{
+  padding:48px 0 96px 0;
+}
+
+form.contact-form{
+  display:grid;
+  gap:12px;
+  max-width:540px;
+}
+
+input, textarea{
+  padding:12px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.04);
+  background:rgba(255,255,255,0.02);
+  color:var(--text);
+}
+
+textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+/* ============================= */
+/* FOOTER                        */
+/* ============================= */
+.site-footer{
+  padding:28px 0;
+  border-top:1px solid rgba(255,255,255,0.03);
+  color:var(--muted);
+  text-align:center;
+}
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+@media (max-width:800px){
+  .hero-inner{
+    flex-direction:column;
+    text-align:left;
+  }
+
+  .profile-img{
+    width:180px;
+    height:180px;
+  }
+
+  .waves{
+    display:none;
+  }
+
+  .tech-marquee{
+    position:relative;
+    margin-top:32px;
+  }
+}

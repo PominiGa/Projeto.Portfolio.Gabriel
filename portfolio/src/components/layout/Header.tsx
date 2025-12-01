@@ -1,20 +1,22 @@
-export default function Header() {
-return (
-<header className="border-b border-gray-200 dark:border-gray-800">
-<div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-<a className="text-xl font-bold text-indigo-600 dark:text-indigo-400" href="#home">
-SeuNome.dev
-</a>
+import React from 'react'
 
-
-<nav>
-<ul className="flex gap-6 text-sm">
-<li><a href="#projects" className="hover:text-indigo-500">Projetos</a></li>
-<li><a href="#about" className="hover:text-indigo-500">Sobre</a></li>
-<li><a href="#contact" className="hover:text-indigo-500">Contato</a></li>
-</ul>
-</nav>
-</div>
-</header>
-);
+export default function Header(){
+  return (
+    <header className="site-header">
+      <div className="container" style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+        <div className="brand">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden focusable="false">
+            <rect width="24" height="24" rx="6" fill="#6366f1"></rect>
+            <path d="M6 12h12" stroke="#fff" strokeWidth="1.5" strokeLinecap="round"></path>
+          </svg>
+          <span>Gabriel Pomini</span>
+        </div>
+        <nav className="nav" aria-label="Principal">
+          <a href="#projects">Projetos</a>
+          <a href="#about">Sobre</a>
+          <a href="#contact">Contato</a>
+        </nav>
+      </div>
+    </header>
+  )
 }

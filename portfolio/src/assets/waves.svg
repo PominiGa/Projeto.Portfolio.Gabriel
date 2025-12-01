@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-  <path fill="#6366f1" fill-opacity="0.5" d="M0,288L1440,96V320H0Z"></path>
-  <path fill="#8b5cf6" fill-opacity="0.6" d="M0,192L1440,0V320H0Z"></path>
+<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#g)" d="M0,224L48,202.7C96,181,192,139,288,128C384,117,480,139,576,170.7C672,203,768,245,864,245.3C960,245,1056,203,1152,186.7C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"/>
 </svg>
