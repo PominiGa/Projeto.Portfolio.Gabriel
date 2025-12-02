@@ -1,0 +1,80 @@
+.about {
+  padding: 80px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.about-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.about-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.about-text h2 {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+/* COLUNA DIREITA — CARDS */
+.about-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 260px;
+}
+
+.about-card {
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.about-card .number {
+  display: block;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.about-card p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .about-inner {
+    flex-direction: column;
+  }
+
+  .about-cards {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .about-card {
+    flex: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-cards {
+    flex-direction: column;
+  }
+}

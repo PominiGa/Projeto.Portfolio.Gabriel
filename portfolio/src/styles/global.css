@@ -19,7 +19,7 @@ body{
   background:linear-gradient(180deg,#071224 0%, #0f1724 100%);
   color:var(--text);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  line-height:1.5;
+  line-height:1.4;
   -webkit-font-smoothing:antialiased;
 }
 
@@ -204,6 +204,36 @@ textarea{
   color:var(--muted);
   text-align:center;
 }
+
+/* Social icons (image links) */
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  transition: background-color .15s ease, transform .12s ease, opacity .12s ease;
+}
+
+.social-icons a img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* hover / focus */
+.social-icons a:hover,
+.social-icons a:focus {
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.social-icons a:focus {
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.12);
+}
+
 
 /* ============================= */
 /* RESPONSIVE                    */
