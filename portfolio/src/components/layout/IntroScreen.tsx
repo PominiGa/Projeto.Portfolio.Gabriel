@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-export default function StartScreen({ onEnter }) {
+export default function IntroScreen({ onEnter }) {
   const textTop = "Hello World!";
   const textBottom = "Todos começam assim, poucos continuam!";
 
   const [displayTop, setDisplayTop] = useState("");
   const [displayBottom, setDisplayBottom] = useState("");
 
-  // linhas do fundo
+  // fundo com várias linguagens
   const backgroundLines = [
     'console.log("Hello World!")  // JavaScript',
     'print("Hello World!")        # Python',
@@ -21,10 +21,6 @@ export default function StartScreen({ onEnter }) {
     'fmt.Println("Hello World!")  // Go',
     'console.log("Hello World!")  // Node.js',
   ];
-
-  /* ===========================
-        ANIMAÇÃO DOS TEXTOS
-     =========================== */
 
   // animação do topo
   useEffect(() => {
@@ -70,15 +66,13 @@ export default function StartScreen({ onEnter }) {
         padding: "20px",
       }}
     >
-      {/* ===========================
-            FUNDO COM LINGUAGENS
-         =========================== */}
+      {/* Fundo com linguagens */}
       <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
         {backgroundLines.map((line, idx) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, x: 80 }}
-            animate={{ opacity: 0.08, x: -80 }}
+            animate={{ opacity: 0.80, x: -80 }}
             transition={{
               duration: 6,
               delay: idx * 0.4,
@@ -92,7 +86,7 @@ export default function StartScreen({ onEnter }) {
               left: "5%",
               whiteSpace: "nowrap",
               fontSize: "20px",
-              color: "#ffffff20",
+              color: "#ffffff50",
               fontFamily: "monospace",
             }}
           >
@@ -101,9 +95,7 @@ export default function StartScreen({ onEnter }) {
         ))}
       </div>
 
-      {/* ===========================
-                TEXTO 1
-         =========================== */}
+      {/* Texto topo */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -118,9 +110,7 @@ export default function StartScreen({ onEnter }) {
         {displayTop}
       </motion.h1>
 
-      {/* ===========================
-                TEXTO 2
-         =========================== */}
+      {/* Texto base */}
       <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: displayBottom ? 1 : 0 }}
@@ -136,9 +126,7 @@ export default function StartScreen({ onEnter }) {
         {displayBottom}
       </motion.h2>
 
-      {/* ===========================
-                  BOTÃO
-         =========================== */}
+      {/* Botão entrar */}
       <motion.button
         onClick={onEnter}
         whileHover={{ scale: 1.05 }}
