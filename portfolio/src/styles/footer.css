@@ -1,0 +1,100 @@
+/* ============================= */
+/* FOOTER                        */
+/* ============================= */
+
+.site-footer {
+  margin-top: auto;
+  padding: 56px 0 32px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  color: var(--muted);
+}
+
+/* CONTAINER */
+.footer-container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* GRID CENTRAL */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 64px;
+  text-align: center;            /* 🔥 FORÇA TEXTO CENTRAL */
+  justify-items: center;         /* 🔥 FORÇA CONTEÚDO CENTRAL */
+}
+
+/* COLUNAS */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;           /* 🔥 CENTRALIZA TUDO */
+  gap: 14px;
+}
+
+.footer-col h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+/* LINKS */
+.footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;       /* 🔥 */
+  gap: 10px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+/* BOTÃO CURRÍCULO */
+.footer-link.download {
+  color: #a78bfa;
+}
+
+.footer-link.download:hover {
+  color: #c4b5fd;
+}
+
+
+.footer-cv:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.4);
+}
+
+/* DIVISÓRIA */
+.footer-divider {
+  margin: 48px 0 24px;
+  height: 1px;
+  background: rgba(255,255,255,0.05);
+}
+
+/* COPYRIGHT */
+.footer-bottom {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ============================= */
+/* RESPONSIVO                    */
+/* ============================= */
+
+@media (max-width: 720px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

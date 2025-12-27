@@ -1,8 +1,7 @@
 import React from "react";
 import waves from "../../assets/waves.svg";
 import TechMarquee from "../tech/TechMarquee";
-import profile from "../../assets/profile.jpg"; // SUA FOTO AQUI
-
+import profile from "../../assets/profile.jpg";
 export default function Hero() {
   return (
     <section className="hero">

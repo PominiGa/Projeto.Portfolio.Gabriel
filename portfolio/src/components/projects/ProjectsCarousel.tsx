@@ -41,6 +41,11 @@ const projects: Project[] = [
     image: Smash,
     tags: ["HTML", "CSS", "JavaScript", "TypeScript"],
     link: "https://github.com/PominiGa/Smash.Burguer"
+  },
+  {
+    id: 5,
+    title: "Projeto 5",
+    
   }
 ];
 
