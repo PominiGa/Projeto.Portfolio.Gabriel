@@ -4,6 +4,7 @@ import Dashbord from "../../assets/Dashboard.png";
 import Concessionaria from "../../assets/concessionaria.png";
 import Portfolio from "../../assets/portfolio.png";
 import Smash from "../../assets/Smash.png";
+import MeuDia from "../../assets/MeuDia.png";
 
 interface Project {
   id: number;
@@ -44,8 +45,10 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Projeto 5",
-    
+    title: "Meu Dia X",
+    image: MeuDia,
+    tags: ["HTML", "CSS", "JavaScript", "TypeScript"],
+    link: "https://github.com/PominiGa/Sim-aceito/tree/main/simaceito"
   }
 ];
 
