@@ -5,8 +5,8 @@ import profile from "../../assets/profile.jpg";
 
 export default function Hero() {
 
-  const handleMouseMove = (e) => {
-    const rect = e.target.getBoundingClientRect();
+  const handleMouseMove = (e: React.MouseEvent<HTMLImageElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
 
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -17,11 +17,13 @@ export default function Hero() {
     const rotateX = ((y - centerY) / centerY) * 20;
     const rotateY = ((x - centerX) / centerX) * 20;
 
-    e.target.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+    e.currentTarget.style.transform =
+      `rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
   };
 
-  const resetRotation = (e) => {
-    e.target.style.transform = `rotateX(0deg) rotateY(0deg)`;
+  const resetRotation = (e: React.MouseEvent<HTMLImageElement>) => {
+    e.currentTarget.style.transform =
+      `rotateX(0deg) rotateY(0deg)`;
   };
 
   return (

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-export default function IntroScreen({ onEnter }) {
+type Props = {
+  onEnter: () => void;
+};
+
+export default function IntroScreen({ onEnter }: Props) {
   const textTop = "Hello World!";
   const textBottom = "Todos começam assim, poucos continuam!";
 
