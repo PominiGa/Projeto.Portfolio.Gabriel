@@ -31,8 +31,8 @@ export default function About() {
 
         <div className="about-cards">
           <div className="about-card">
-            <span className="number">6+</span>
-            <p>Meses estudando tecnologia</p>
+            <span className="number">1</span>
+            <p>Ano estudando tecnologia</p>
           </div>
 
           <div className="about-card">
