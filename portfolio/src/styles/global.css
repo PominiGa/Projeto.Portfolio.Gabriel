@@ -278,15 +278,23 @@ body{
 /* ============================= */
 @media (max-width:800px){
   .hero-inner{
-    flex-direction:column;
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-copy{
+    align-items: center;
+  }
+
+  .hero-right{
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   .profile-img{
     width:180px;
     height:180px;
-  }
-
-  .waves{
-    display:none;
+    margin-bottom: 20px;
   }
 }
