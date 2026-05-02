@@ -9,12 +9,12 @@ export default function About() {
         <div className="about-text">
           <h2>Sobre mim</h2>
           <p>
-             Meu nome é Gabriel Pomini de Souza. Moro atualmente em Lençois Paulista - SP. Sou uma pessoa simples que gosta de aprender coisas novas e enfrentar 
+            Meu nome é Gabriel Pomini de Souza. Moro atualmente em Lençois Paulista - SP. Sou uma pessoa simples que gosta de aprender coisas novas e enfrentar 
             desafios. Desde sempre tive interesse por tecnologia e programação, o que me levou a
             buscar uma carreira nessa área.
           </p>
           <p>
-             Sou um desenvolvedor Full-Stack mais focado em Backend, com Java e
+            Sou um desenvolvedor Full-Stack mais focado em Backend, com Java e
             Spring Boot, mas também tenho experiência com tecnologias Frontend
             como React e TypeScript.
           </p>

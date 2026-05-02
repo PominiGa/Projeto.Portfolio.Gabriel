@@ -16,18 +16,36 @@ html, body, #root{
 }
 
 body{
-  background:linear-gradient(180deg,#071224 0%, #0f1724 100%);
+  background:#071224; /* fundo base */
   color:var(--text);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   line-height:1.4;
   -webkit-font-smoothing:antialiased;
 }
 
-/* APP ROOT */
+/* ============================= */
+/* FUNDO GLOBAL FIXO (SOLUÇÃO)   */
+/* ============================= */
 .app-root{
   min-height:100vh;
   display:flex;
   flex-direction:column;
+  position:relative;
+  z-index:0;
+}
+
+.app-root::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+
+  background: linear-gradient(
+    180deg,
+    #071224 0%,
+    #0b1628 50%,
+    #0f1724 100%
+  );
 }
 
 /* ============================= */
@@ -72,13 +90,12 @@ body{
 }
 
 /* ============================= */
-/* HERO SECTION                  */
+/* HERO                          */
 /* ============================= */
 .hero{
-  padding:64px 0 140px 0; /* espaço para o marquee */
+  padding:64px 0 140px 0;
   position:relative;
   overflow:hidden;
-  z-index:1; /* base do hero */
 }
 
 .hero-inner{
@@ -86,8 +103,6 @@ body{
   gap:36px;
   align-items:center;
   justify-content:space-between;
-  position:relative;
-  z-index:2; /* sempre acima das waves */
 }
 
 .hero-copy{
@@ -99,13 +114,7 @@ body{
   margin-bottom:12px;
 }
 
-.hero {
-  position: relative;
-  padding-bottom: 94px; /* espaço EXATO para a waves */
-  overflow: visible;
-  z-index: 1;
-}
-
+/* BOTÕES */
 .cta{
   display:inline-block;
   background:var(--accent);
@@ -115,6 +124,7 @@ body{
   text-decoration:none;
   font-weight:600;
 }
+
 .cta.secondary{
   background:transparent;
   border:1px solid rgba(255,255,255,0.06);
@@ -124,7 +134,6 @@ body{
 /* ============================= */
 /* PROFILE IMAGE                 */
 /* ============================= */
-
 .profile-img {
   width:240px;
   height:240px;
@@ -133,16 +142,13 @@ body{
   object-position:top;
   border:4px solid rgba(78, 3, 121, 0.1);
   box-shadow:0 0 25px rgba(0,0,0,0.3);
-  position:relative;
-  z-index:3;
 
   transition: transform 0.2s ease-out;
   transform-style: preserve-3d;
-  will-change: transform;
 }
 
 /* ============================= */
-/* WAVES (fundo decorativo)      */
+/* WAVES                         */
 /* ============================= */
 .waves{
   position:absolute;
@@ -152,17 +158,16 @@ body{
   opacity:0.12;
   pointer-events:none;
   animation: waveSlide 12s ease-in-out infinite;
-  z-index:0;
 }
 
-/* ondas flutuando */
 @keyframes waveSlide {
   0% { transform: translateX(0); }
   50% { transform: translateX(30px); }
   100% { transform: translateX(0); }
 }
+
 /* ============================= */
-/* TECH MARQUEE (barra animada)  */
+/* TECH MARQUEE                  */
 /* ============================= */
 .tech-marquee-wrapper{
   position:absolute;
@@ -175,42 +180,79 @@ body{
 }
 
 /* ============================= */
-/* CONTACT FORM                  */
+/* CONTACT                       */
 /* ============================= */
-.contact{
-  padding:48px 0 96px 0;
+#contact {
+  padding: 100px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-form.contact-form{
-  display:grid;
-  gap:12px;
-  max-width:540px;
+#contact h2 {
+  margin-bottom: 28px;
+  font-weight: 600;
 }
 
-input, textarea{
-  padding:12px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,0.04);
-  background:rgba(255,255,255,0.02);
-  color:var(--text);
+/* FORM */
+#contact form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-textarea{
-  min-height:120px;
-  resize:vertical;
+/* INPUTS */
+#contact input,
+#contact textarea {
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  color: var(--text);
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  outline: none;
+  border-color: rgba(255,255,255,0.25);
+}
+
+#contact textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* BOTÃO */
+#contact button {
+  margin-top: 8px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--accent);
+  color: white;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+#contact button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 /* ============================= */
 /* FOOTER                        */
 /* ============================= */
 .site-footer{
-  padding:28px 0;
+  padding:40px 0;
   border-top:1px solid rgba(255,255,255,0.03);
   color:var(--muted);
   text-align:center;
 }
 
-/* Social icons (image links) */
+/* SOCIAL */
 .social-icons a {
   display: inline-flex;
   align-items: center;
@@ -218,27 +260,18 @@ textarea{
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  transition: background-color .15s ease, transform .12s ease, opacity .12s ease;
+  transition: background-color .15s ease, transform .12s ease;
 }
 
 .social-icons a img {
   width: 20px;
   height: 20px;
-  object-fit: contain;
 }
 
-/* hover / focus */
-.social-icons a:hover,
-.social-icons a:focus {
+.social-icons a:hover {
   background: rgba(255,255,255,0.04);
   transform: translateY(-2px);
-  outline: none;
 }
-
-.social-icons a:focus {
-  box-shadow: 0 0 0 4px rgba(99,102,241,0.12);
-}
-
 
 /* ============================= */
 /* RESPONSIVE                    */
@@ -246,7 +279,6 @@ textarea{
 @media (max-width:800px){
   .hero-inner{
     flex-direction:column;
-    text-align:left;
   }
 
   .profile-img{
@@ -256,10 +288,5 @@ textarea{
 
   .waves{
     display:none;
-  }
-
-  .tech-marquee{
-    position:relative;
-    margin-top:32px;
   }
 }
