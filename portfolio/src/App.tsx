@@ -10,10 +10,8 @@ import Contact from './components/contact/Contact';
 import Footer from './components/layout/Footer';
 
 export default function App() {
-  // controla se mostra a intro (true) ou o site (false)
   const [showIntro, setShowIntro] = useState<boolean>(true);
 
-  // Se quiser que o usuário só veja a intro uma vez por sessão:
   useEffect(() => {
     const seen = sessionStorage.getItem("introSeen");
     if (seen === "1") setShowIntro(false);
@@ -22,7 +20,6 @@ export default function App() {
   const handleFinishIntro = () => {
     sessionStorage.setItem("introSeen", "1");
     setShowIntro(false);
-    // opcional: rolar para top
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

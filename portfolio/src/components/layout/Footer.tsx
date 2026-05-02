@@ -7,7 +7,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Download,
 } from "lucide-react";
 
 export default function Footer() {
@@ -56,15 +55,6 @@ export default function Footer() {
           >
             <Linkedin size={16} />
             LinkedIn
-          </a>
-
-          <a
-            href="../assets/Gabriel_Pomini_Curriculo.pdf"
-            download
-            className="footer-link download"
-          >
-            <Download size={16} />
-            Baixar Currículo
           </a>
         </div>
       </div>
