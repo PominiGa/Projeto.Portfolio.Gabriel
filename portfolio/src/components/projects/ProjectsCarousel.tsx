@@ -73,7 +73,7 @@ export default function ProjectsCarousel() {
         </button>
 
         <div className="carousel-item">
-          <a href={projects[index].link} target="_blank">
+          <a href={projects[index].link} target="_blank" rel="noopener noreferrer">
             <img src={projects[index].image} alt={projects[index].title} />
           </a>
 
