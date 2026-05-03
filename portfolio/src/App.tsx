@@ -8,6 +8,7 @@ import ProjectsGrid from './components/projects/ProjectsCarousel';
 import About from './components/about/AboutSection';
 import Contact from './components/contact/Contact';
 import Footer from './components/layout/Footer';
+import Services from "./components/services/service";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState<boolean>(true);
@@ -34,6 +35,7 @@ export default function App() {
         <Hero />
         <ProjectsGrid />
         <About />
+        <Services />
         <Contact />
       </main>
       <Footer />

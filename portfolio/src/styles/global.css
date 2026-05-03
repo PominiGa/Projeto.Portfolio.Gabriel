@@ -58,6 +58,7 @@ body{
   justify-content:space-between;
   border-bottom:1px solid rgba(255,255,255,0.03);
   background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  flex-wrap: wrap;
 }
 
 .brand{
@@ -79,6 +80,38 @@ body{
 }
 .nav a:hover{
   color:var(--text);
+}
+
+/* ============================= */
+/* MOBILE HEADER                 */
+/* ============================= */
+@media (max-width:800px){
+
+  .site-header{
+    padding:16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:10px;
+  }
+
+  .brand{
+    width:100%;
+    justify-content: space-between;
+  }
+
+  .nav{
+    display:flex;
+    flex-wrap: wrap;          /* permite quebrar */
+    justify-content: center;  /* centraliza */
+    gap:8px;
+  }
+
+  .nav a{
+    flex: 1 1 100px;          /* tamanho mínimo */
+    text-align:center;
+    padding:8px 0;
+    white-space: nowrap;
+  }
 }
 
 /* ============================= */
@@ -158,6 +191,130 @@ body{
   opacity:0.12;
   pointer-events:none;
   animation: waveSlide 12s ease-in-out infinite;
+}
+
+/* ============================= */
+/* SERVICES                      */
+/* ============================= */
+
+.services {
+  padding: 100px 0;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 28px;
+  margin-bottom: 48px;
+}
+
+/* GRID */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
+.service-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px;
+  border-radius: 16px;
+
+  text-align: left;
+
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* hover mais elegante */
+.service-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(99,102,241,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* ICON */
+.service-card .icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+/* TITLE */
+.service-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* DESCRIPTION */
+.service-card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* ============================= */
+/* TECNOLOGIAS (NOVO)            */
+/* ============================= */
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* TAG */
+.tech-tag {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+/* faixa diagonal */
+.ribbon {
+  position: absolute;
+  top: 16px;
+  right: -40px;
+
+  background: rgba(255, 200, 0, 0.9);
+  color: #000;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  padding: 6px 40px;
+
+  transform: rotate(45deg);
+  z-index: 5;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* opcional: deixar o card um pouco mais "desativado" */
+.service-card:has(.ribbon) {
+  opacity: 0.85;
+}
+
+/* ============================= */
+/* MOBILE                        */
+/* ============================= */
+
+@media (max-width: 800px) {
+  .services {
+    padding: 80px 0;
+  }
+
+  .services-grid {
+    gap: 16px;
+  }
+
+  .service-card {
+    padding: 18px;
+  }
 }
 
 @keyframes waveSlide {
@@ -242,6 +399,16 @@ body{
   transform: translateY(-1px);
 }
 
+.private-label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 100, 100, 0.9);
+  color: white;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
 /* ============================= */
 /* FOOTER                        */
 /* ============================= */

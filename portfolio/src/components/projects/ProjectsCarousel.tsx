@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import "../../styles/projects.css";
+
 import Dashbord from "../../assets/Dashboard.png";
 import Concessionaria from "../../assets/concessionaria.png";
 import Portfolio from "../../assets/portfolio.png";
 import Smash from "../../assets/Smash.png";
 import MeuDia from "../../assets/MeuDia.png";
+import SmashSistema from "../../assets/sistemaSmash.png";
+import sistemaConstruelo from "../../assets/projetoConstruelo.jpeg";
 
 interface Project {
   id: number;
@@ -49,6 +52,20 @@ const projects: Project[] = [
     image: MeuDia,
     tags: ["HTML", "CSS", "JavaScript", "TypeScript"],
     link: "https://github.com/PominiGa/Sim-aceito/tree/main/simaceito"
+  },
+  {
+    id: 6,
+    title: "Sistema Smash",
+    image: SmashSistema,
+    tags: ["Java", "Swing", "MySQL"],
+    link: ""
+  },
+  {
+    id: 7,
+    title: "Sistema Construelo",
+    image: sistemaConstruelo,
+    tags: ["React", "TypeScript", "PostgreSQL"],
+    link: ""
   }
 ];
 
@@ -63,6 +80,17 @@ export default function ProjectsCarousel() {
     setIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
   };
 
+  const handleProjectClick = (project: Project) => {
+    if (!project.link) {
+      alert("Projeto privado por motivos comerciais. Posso demonstrar em uma conversa.");
+      return;
+    }
+
+    window.open(project.link, "_blank");
+  };
+
+  const currentProject = projects[index];
+
   return (
     <section className="projects-carousel container">
       <h2>Projetos</h2>
@@ -73,15 +101,27 @@ export default function ProjectsCarousel() {
         </button>
 
         <div className="carousel-item">
-          <a href={projects[index].link} target="_blank" rel="noopener noreferrer">
-            <img src={projects[index].image} alt={projects[index].title} />
-          </a>
+          <div
+            onClick={() => handleProjectClick(currentProject)}
+            style={{ cursor: "pointer", position: "relative" }}
+          >
+            {!currentProject.link && (
+              <span className="private-label">Privado</span>
+            )}
 
-          <h3>{projects[index].title}</h3>
+            <img
+              src={currentProject.image}
+              alt={currentProject.title}
+            />
+          </div>
+
+          <h3>{currentProject.title}</h3>
 
           <div className="tags">
-            {projects[index].tags.map((t) => (
-              <span key={t} className="tag">{t}</span>
+            {currentProject.tags.map((t) => (
+              <span key={t} className="tag">
+                {t}
+              </span>
             ))}
           </div>
         </div>
