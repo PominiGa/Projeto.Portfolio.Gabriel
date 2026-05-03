@@ -72,7 +72,7 @@ export default function Header() {
         </div>
 
         <nav className="nav" aria-label="Principal">
-          <a href="#projects">Projetos</a>
+          <a href="#services">Serviços</a>
           <a href="#about">Sobre</a>
           <a href="#contact">Contato</a>
         </nav>
