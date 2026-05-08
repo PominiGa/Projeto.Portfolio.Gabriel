@@ -1,4 +1,5 @@
 import "../../styles/footer.css";
+import curriculo from "../../assets/Gabriel Pomini de Souza.pdf";
 
 import React from "react";
 import {
@@ -7,6 +8,7 @@ import {
   Mail,
   Phone,
   MapPin,
+  FileText,
 } from "lucide-react";
 
 export default function Footer() {
@@ -55,6 +57,10 @@ export default function Footer() {
           >
             <Linkedin size={16} />
             LinkedIn
+          </a>
+          <a href={curriculo} target="_blank" rel="noreferrer" className="footer-cv">
+            <FileText size={16} />
+            Currículo
           </a>
         </div>
       </div>
