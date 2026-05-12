@@ -8,6 +8,7 @@ import Smash from "../../assets/Smash.png";
 import MeuDia from "../../assets/MeuDia.png";
 import SmashSistema from "../../assets/sistemaSmash.png";
 import sistemaConstruelo from "../../assets/projetoConstruelo.jpeg";
+import BotFarmacia from "../../assets/projetofarmacia.png";
 
 interface Project {
   id: number;
@@ -65,6 +66,13 @@ const projects: Project[] = [
     title: "Sistema Construelo",
     image: sistemaConstruelo,
     tags: ["React", "TypeScript", "PostgreSQL"],
+    link: ""
+  },
+  {
+    id: 8,
+    title: "Bot Farmácia",
+    image: BotFarmacia,
+    tags: ["Java"],
     link: ""
   }
 ];
