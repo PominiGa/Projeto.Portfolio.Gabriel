@@ -1,8 +1,9 @@
-import { ArrowRight, Mail, Github, Linkedin, Phone, GitBranch, Coffee } from 'lucide-react';
+import { ArrowRight, Mail, Github, Linkedin, GitBranch, Coffee } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Reveal } from '../shared/Reveal';
 import { LINKS, PROJECTS } from '../../data';
 import { TechLogo } from '../shared/TechLogo';
+import { useLanguage } from '../../context/LanguageContext';
 import profile from '../../assets/profile.jpg';
 
 const MARQUEE_ITEMS = ['JAVA', 'SPRING BOOT', 'REACT', 'TYPESCRIPT', 'POSTGRESQL', 'PYTHON', 'REST API', 'DOCKER', 'GIT'];
@@ -21,6 +22,9 @@ function Marquee() {
 }
 
 export default function Hero() {
+  const { T } = useLanguage();
+  const h = T.hero;
+
   return (
     <section className="hero">
       <div className="wrap">
@@ -36,39 +40,36 @@ export default function Hero() {
             <Reveal delay={140}>
               <p className="hero__role">
                 <span className="hero__role-tag">{'<dev>'}</span>
-                Desenvolvedor
+                {h.role}
                 <span className="hero__role-tag">{'</dev>'}</span>
               </p>
             </Reveal>
 
             <Reveal delay={200}>
-              <p className="lead hero__lead">
-                Construo aplicações robustas e escaláveis com Java &amp; Spring Boot,
-                com uma camada frontend afiada em React e TypeScript.
-              </p>
+              <p className="lead hero__lead">{h.lead}</p>
             </Reveal>
 
             <Reveal delay={260}>
               <div className="hero__cta">
                 <Link className="btn btn--primary" to="/projetos">
-                  Ver projetos <ArrowRight size={17} />
+                  {h.cta_projects} <ArrowRight size={17} />
                 </Link>
                 <Link className="btn" to="/contato">
-                  <Mail size={17} /> Entrar em contato
+                  <Mail size={17} /> {h.cta_contact}
                 </Link>
               </div>
             </Reveal>
 
             <Reveal delay={320}>
               <div className="hero__socials">
-                <a href={LINKS.github}   target="_blank" rel="noopener">
+                <a href={LINKS.github} target="_blank" rel="noopener">
                   <Github size={18} /> GitHub
                 </a>
                 <a href={LINKS.linkedin} target="_blank" rel="noopener">
                   <Linkedin size={18} /> LinkedIn
                 </a>
-                <a href={LINKS.whatsapp} target="_blank" rel="noopener">
-                  <Phone size={18} /> WhatsApp
+                <a href={`mailto:${LINKS.email}`}>
+                  <Mail size={18} /> {LINKS.email}
                 </a>
               </div>
             </Reveal>
@@ -99,12 +100,7 @@ export default function Hero() {
       {/* Stat strip */}
       <section className="wrap">
         <div className="stat-strip">
-          {[
-            { k: 'FullStack',      v: 'Backend-first'   },
-            { k: 'Java + Spring',  v: 'Stack principal'  },
-            { k: 'React + TS',     v: 'Frontend'         },
-            { k: 'SP, Brasil',     v: 'Lençóis Paulista' },
-          ].map((s, i) => (
+          {h.stats.map((s, i) => (
             <Reveal delay={i * 60} key={i} className="stat-strip__item">
               <div className="stat-strip__k">{s.k}</div>
               <div className="stat-strip__v">{s.v}</div>
@@ -117,12 +113,12 @@ export default function Hero() {
       <section className="wrap" style={{ marginTop: 110 }}>
         <div className="peek-head">
           <div className="sec-head" style={{ marginBottom: 0 }}>
-            <Reveal><div className="eyebrow">Trabalho selecionado</div></Reveal>
-            <Reveal delay={60}><h2 className="h2">Projetos em destaque</h2></Reveal>
+            <Reveal><div className="eyebrow">{h.section_eyebrow}</div></Reveal>
+            <Reveal delay={60}><h2 className="h2">{h.section_title}</h2></Reveal>
           </div>
           <Reveal>
             <Link className="btn btn--ghost" to="/projetos">
-              Todos <ArrowRight size={16} />
+              {h.section_all} <ArrowRight size={16} />
             </Link>
           </Reveal>
         </div>
@@ -134,8 +130,7 @@ export default function Hero() {
                 <div className="peek-card__banner" style={!p.image ? { background: p.bg } : {}}>
                   {p.image
                     ? <img src={p.image} alt={p.name} />
-                    : <span className="peek-card__glyph">{p.glyph}</span>
-                  }
+                    : <span className="peek-card__glyph">{p.glyph}</span>}
                   <span className="peek-card__idx">{p.num}</span>
                   {p.private && <span className="peek-card__priv">Privado</span>}
                 </div>
@@ -144,9 +139,7 @@ export default function Hero() {
                   <p>{p.tagline}</p>
                   <div className="stack-logos" style={{ marginTop: 14 }}>
                     {p.stack.slice(0, 4).map(t => (
-                      <span className="stack-chip" key={t}>
-                        <TechLogo name={t} size={18} /> {t}
-                      </span>
+                      <span className="stack-chip" key={t}><TechLogo name={t} size={18} /> {t}</span>
                     ))}
                   </div>
                 </div>
@@ -162,21 +155,16 @@ export default function Hero() {
           <div className="cta-section">
             <div className="cta-section__deco" />
             <div className="cta-section__inner">
-              <div className="eyebrow" style={{ color: 'var(--accent-ink)' }}>Vamos conversar</div>
-              <h2 className="h2" style={{ maxWidth: '16ch' }}>Tem um projeto em mente?</h2>
-              <p style={{ maxWidth: '44ch', color: 'var(--accent-ink)', opacity: .85 }}>
-                Estou aberto a novas oportunidades e desafios. Bora construir algo bom juntos.
-              </p>
+              <div className="eyebrow" style={{ color: 'var(--accent-ink)' }}>{h.cta_eyebrow}</div>
+              <h2 className="h2" style={{ maxWidth: '16ch' }}>{h.cta_title}</h2>
+              <p style={{ maxWidth: '44ch', color: 'var(--accent-ink)', opacity: .85 }}>{h.cta_desc}</p>
               <div className="hero__cta" style={{ marginTop: 28 }}>
                 <Link className="btn" to="/contato" style={{ background: 'var(--ink)', color: 'var(--bg)' }}>
-                  <Mail size={17} /> Iniciar conversa
+                  <Mail size={17} /> {h.cta_start}
                 </Link>
-                <a
-                  className="btn btn--ghost"
-                  href={`mailto:${LINKS.email}`}
-                  style={{ borderColor: 'var(--accent-ink)', color: 'var(--accent-ink)' }}
-                >
-                  Copiar e-mail
+                <a className="btn btn--ghost" href={`mailto:${LINKS.email}`}
+                  style={{ borderColor: 'var(--accent-ink)', color: 'var(--accent-ink)' }}>
+                  {h.cta_email}
                 </a>
               </div>
             </div>

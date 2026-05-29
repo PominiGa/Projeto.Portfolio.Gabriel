@@ -2,91 +2,63 @@ import { User, MapPin, Code, Coffee, CheckCircle, Layers, Rocket, Puzzle } from 
 import { Link } from 'react-router-dom';
 import { Reveal } from '../shared/Reveal';
 import { SecHead } from '../shared/SecHead';
+import { useLanguage } from '../../context/LanguageContext';
 
-const INFO_ROWS = [
-  { ic: User,        k: 'Nome',           v: 'Gabriel Pomini de Souza' },
-  { ic: MapPin,      k: 'Localização',    v: 'Lençóis Paulista — SP' },
-  { ic: Code,        k: 'Função',         v: 'Dev FullStack · Backend' },
-  { ic: Coffee,      k: 'Stack principal', v: 'Java · Spring Boot' },
-  { ic: CheckCircle, k: 'Status',         v: 'Trabalhando na Softcon' },
-];
-
-const VALUES = [
-  { ic: Layers, t: 'Backend sólido',       d: 'Arquiteturas limpas e escaláveis com Java e Spring Boot, pensando em manutenção a longo prazo.' },
-  { ic: Rocket, t: 'Aprendizado contínuo', d: 'Sempre estudando algo novo. Cada projeto é uma chance de evoluir como profissional.' },
-  { ic: Puzzle, t: 'Resolver problemas',   d: 'Gosto de desafios. Quebrar um problema complexo em partes simples é o que me move.' },
-];
-
-const TIMELINE = [
-  { y: '2026 – presente',  t: 'Desenvolvedor FullStack na Softcon',  d: 'Atuando profissionalmente, construindo e testando aplicações, resolvendo problemas reais e colaborando com o time de desenvolvimento.', now: true },
-  { y: '2025 – presente',  t: 'Cybersegurança',                      d: 'Explorando segurança da informação: análise de vulnerabilidades, criptografia, segurança de redes e boas práticas de proteção de sistemas.' },
-  { y: '2024 – 2025',      t: 'C# e .NET',                           d: 'Aprendendo C# e o ecossistema .NET para ampliar o repertório backend, desenvolvendo sistemas desktop e APIs.' },
-  { y: '2023 – 2024',      t: 'Desenvolvimento Web',                 d: 'Mergulhei no frontend com JavaScript, TypeScript e React, entendendo o ciclo completo do desenvolvimento web moderno.' },
-  { y: '2023',             t: 'JavaScript',                           d: 'Evolução natural do backend para o frontend — JavaScript abriu as portas para o desenvolvimento web e automações.' },
-  { y: '2023 – presente',  t: 'ADS — UNISAGRADO',                    d: 'Ingresso no curso de Análise e Desenvolvimento de Sistemas em Lençóis Paulista, SP. A faculdade consolidou a base técnica e abriu novos caminhos na área.' },
-  { y: '2022 – 2023',      t: 'Java — a base sólida',                d: 'Primeira linguagem de programação. Aprendi lógica, POO e construção de sistemas com Java, que se tornou meu principal stack.' },
-];
+const ICONS = [User, MapPin, Code, Coffee, CheckCircle];
+const VAL_ICONS = [Layers, Rocket, Puzzle];
 
 export default function About() {
+  const { T } = useLanguage();
+  const a = T.about;
+
   return (
     <section>
       <div className="page-hero">
         <div className="wrap">
           <Reveal>
             <div className="page-hero__crumb">
-              <Link to="/">Home</Link> <span>/</span> Sobre
+              <Link to="/">{T.nav.home}</Link> <span>/</span> {a.crumb}
             </div>
           </Reveal>
-          <Reveal delay={60}><div className="eyebrow">Quem é o dev por trás do código</div></Reveal>
-          <Reveal delay={120}><h1>Sobre mim<span className="acc">.</span></h1></Reveal>
+          <Reveal delay={60}><div className="eyebrow">{a.eyebrow}</div></Reveal>
+          <Reveal delay={120}><h1>{a.title}<span className="acc">.</span></h1></Reveal>
         </div>
       </div>
 
       <section className="wrap">
         <div className="about-grid">
           <Reveal className="about-bio">
-            <p className="first-letter">
-              Meu nome é <strong>Gabriel Pomini de Souza</strong>. Moro atualmente em
-              Lençóis Paulista — SP. Sou uma pessoa simples que gosta de aprender
-              coisas novas e enfrentar desafios. Desde sempre tive interesse por
-              tecnologia e programação, o que me levou a buscar uma carreira nessa área.
-            </p>
+            <p className="first-letter" dangerouslySetInnerHTML={{ __html: a.bio[0] }} />
+            <p dangerouslySetInnerHTML={{ __html: a.bio[1] }} />
+            <p>{a.bio[2]}</p>
             <p>
-              Sou um desenvolvedor <strong>Full-Stack</strong> mais focado em{' '}
-              <strong className="acc">Backend</strong>, com Java e Spring Boot, mas
-              também tenho experiência com tecnologias Frontend como React e TypeScript.
-            </p>
-            <p>
-              Além do desenvolvimento, tenho experiência com montagem e manutenção de
-              computadores, automação com Python, desenvolvimento de bots para WhatsApp
-              e criação de planilhas automatizadas com Excel.
-            </p>
-            <p>
-              Estou constantemente estudando e aprimorando minhas habilidades. Estou aberto
-              a novas oportunidades — fique à vontade para visitar a{' '}
-              <Link to="/contato" className="acc" style={{ fontWeight: 700 }}>seção de contato</Link>.
+              {a.bio[3]}{' '}
+              <Link to="/contato" className="acc" style={{ fontWeight: 700 }}>{a.bio[4]}</Link>.
             </p>
           </Reveal>
 
           <Reveal delay={120} className="about-card card">
-            {INFO_ROWS.map(({ ic: Ic, k, v }) => (
-              <div className="about-card__row" key={k}>
-                <span className="about-card__icon"><Ic size={18} /></span>
-                <div>
-                  <div className="about-card__k">{k}</div>
-                  <div className="about-card__v">{v}</div>
+            {a.info.map(({ k, v }, i) => {
+              const Ic = ICONS[i];
+              return (
+                <div className="about-card__row" key={k}>
+                  <span className="about-card__icon"><Ic size={18} /></span>
+                  <div>
+                    <div className="about-card__k">{k}</div>
+                    <div className="about-card__v">{v}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </Reveal>
         </div>
       </section>
 
       <section className="wrap" style={{ marginTop: 96 }}>
-        <SecHead eyebrow="O que me move" title="Princípios" desc="A forma como encaro o trabalho e a tecnologia no dia a dia." />
+        <SecHead eyebrow={a.values_eyebrow} title={a.values_title} desc={a.values_desc} />
         <div className="values-grid">
-          {VALUES.map((v, i) => {
-            const Ic = v.ic;
+          {a.values.map((v, i) => {
+            const Ic = VAL_ICONS[i];
             return (
               <Reveal delay={i * 90} key={i}>
                 <div className="value-card card card--hover">
@@ -101,11 +73,11 @@ export default function About() {
       </section>
 
       <section className="wrap" style={{ marginTop: 96 }}>
-        <SecHead eyebrow="Trajetória" title="A jornada até aqui" />
+        <SecHead eyebrow={a.timeline_eyebrow} title={a.timeline_title} />
         <div className="timeline">
-          {TIMELINE.map((it, i) => (
+          {a.timeline.map((it, i) => (
             <Reveal delay={i * 80} key={i}>
-              <div className={'tl-item' + (it.now ? ' is-now' : '')}>
+              <div className={'tl-item' + ('now' in it && it.now ? ' is-now' : '')}>
                 <h3>{it.t}</h3>
                 <p>{it.d}</p>
               </div>

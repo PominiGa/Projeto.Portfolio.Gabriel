@@ -193,7 +193,12 @@ h1,h2,h3 { line-height: 1.05; font-weight: 800; letter-spacing: -0.02em; }
   background:var(--accent); border:var(--b) solid var(--line); display:grid; place-items:center;
   transition: transform .3s var(--ease), background .3s; color: var(--accent-ink); pointer-events:none;
 }
-[data-theme="dark"] .tgl__knob { transform: translateX(22px); }
+[data-theme="dark"] .tgl--theme .tgl__knob { transform: translateX(22px); }
+[data-lang="en"]   .tgl--lang  .tgl__knob { transform: translateX(22px); }
+
+/* language toggle — wider to fit text */
+.tgl--lang { width: 60px; }
+.tgl--lang .tgl__knob { font-size: 9px; font-weight: 800; letter-spacing: .04em; }
 
 .nav__burger { display:none; width:42px; height:42px; border:var(--b) solid var(--line); border-radius:var(--r); background:var(--surface); place-items:center; padding:0; }
 

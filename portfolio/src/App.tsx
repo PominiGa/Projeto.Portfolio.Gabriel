@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import { LangProvider } from './context/LanguageContext';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import CustomCursor from './components/layout/CustomCursor';
@@ -35,9 +36,11 @@ function Portfolio() {
 export default function App() {
   return (
     <ThemeProvider>
-      <BrowserRouter>
-        <Portfolio />
-      </BrowserRouter>
+      <LangProvider>
+        <BrowserRouter>
+          <Portfolio />
+        </BrowserRouter>
+      </LangProvider>
     </ThemeProvider>
   );
 }

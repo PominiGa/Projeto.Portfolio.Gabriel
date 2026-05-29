@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
-
-const NAV = [
-  { n: '01', label: 'Home',     to: '/' },
-  { n: '02', label: 'Sobre',    to: '/sobre' },
-  { n: '03', label: 'Projetos', to: '/projetos' },
-  { n: '04', label: 'Skills',   to: '/skills' },
-  { n: '05', label: 'Contato',  to: '/contato' },
-];
+import { useLanguage } from '../../context/LanguageContext';
 
 export default function Navbar() {
-  const { theme, toggle } = useTheme();
+  const { theme, toggle: toggleTheme } = useTheme();
+  const { lang, toggleLang, T } = useLanguage();
   const [open, setOpen] = useState(false);
+
+  const NAV = [
+    { n: '01', label: T.nav.home,     to: '/'         },
+    { n: '02', label: T.nav.sobre,    to: '/sobre'    },
+    { n: '03', label: T.nav.projetos, to: '/projetos' },
+    { n: '04', label: T.nav.skills,   to: '/skills'   },
+    { n: '05', label: T.nav.contato,  to: '/contato'  },
+  ];
 
   return (
     <>
@@ -38,13 +40,18 @@ export default function Navbar() {
           </div>
 
           <div className="nav__right">
-            <button className="tgl" onClick={toggle} aria-label="Alternar tema">
+            {/* Theme toggle */}
+            <button className="tgl tgl--theme" onClick={toggleTheme} aria-label="Alternar tema">
               <span className="tgl__knob">
-                {theme === 'light'
-                  ? <Sun size={13} strokeWidth={2.5} />
-                  : <Moon size={13} strokeWidth={2.5} />}
+                {theme === 'light' ? <Sun size={13} strokeWidth={2.5} /> : <Moon size={13} strokeWidth={2.5} />}
               </span>
             </button>
+
+            {/* Language toggle */}
+            <button className="tgl tgl--lang" onClick={toggleLang} aria-label="Change language">
+              <span className="tgl__knob">{lang === 'pt' ? 'BR' : 'EN'}</span>
+            </button>
+
             <button className="nav__burger" onClick={() => setOpen(o => !o)} aria-label="Menu">
               {open ? <X size={20} /> : <Menu size={20} />}
             </button>

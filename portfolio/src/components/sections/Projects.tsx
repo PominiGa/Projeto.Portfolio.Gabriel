@@ -1,14 +1,23 @@
-import { Calendar, User, Check, Github, ExternalLink } from 'lucide-react';
+import { Calendar, Check, Github, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Reveal } from '../shared/Reveal';
-import { SecHead } from '../shared/SecHead';
 import { TechLogo } from '../shared/TechLogo';
 import { PROJECTS, LINKS, type Project } from '../../data';
+import { useLanguage } from '../../context/LanguageContext';
 
-function ProjectRow({ p, i }: { p: Project; i: number }) {
+function ProjectRow({ p }: { p: Project }) {
+  const { lang, T } = useLanguage();
+  const tp = T.projects;
+  const isEn = lang === 'en';
+
+  const desc     = isEn ? p.desc_en     : p.desc;
+  const features = isEn ? p.features_en : p.features;
+  const tagline  = isEn ? p.tagline_en  : p.tagline;
+  const role     = isEn ? p.role_en     : p.role;
+  const type     = isEn ? p.type_en     : p.type;
+
   return (
     <div className="proj-row">
-      {/* Visual */}
       <Reveal className="proj-row__visual" delay={40}>
         <div className="proj-visual" style={!p.image ? { background: p.bg } : {}}>
           {p.image ? (
@@ -19,20 +28,19 @@ function ProjectRow({ p, i }: { p: Project; i: number }) {
               <span className="proj-visual__glyph">{p.glyph}</span>
             </>
           )}
-          <span className="proj-visual__tag">{p.type}</span>
+          <span className="proj-visual__tag">{type}</span>
           <span className="proj-visual__num">{p.num}</span>
-          {p.private && <span className="proj-visual__priv">Privado</span>}
+          {p.private && <span className="proj-visual__priv">{tp.private}</span>}
         </div>
       </Reveal>
 
-      {/* Info */}
       <Reveal className="proj-info" delay={120}>
         <div className="proj-info__meta">
           <span><Calendar size={14} /> {p.year}</span>
-          <span><User size={14} /> {p.role}</span>
+          <span>{role}</span>
         </div>
         <h2>{p.name}</h2>
-        <p>{p.desc}</p>
+        <p>{desc}</p>
 
         <div className="proj-metrics">
           {p.metrics.map(([v, k], j) => (
@@ -44,39 +52,36 @@ function ProjectRow({ p, i }: { p: Project; i: number }) {
         </div>
 
         <ul className="proj-features">
-          {p.features.map((f, j) => (
+          {features.map((f, j) => (
             <li key={j}><Check size={16} style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 2 }} /> {f}</li>
           ))}
         </ul>
 
         <div className="stack-logos" style={{ marginTop: 6 }}>
           {p.stack.map(t => (
-            <span className="stack-chip" key={t}>
-              <TechLogo name={t} size={19} /> {t}
-            </span>
+            <span className="stack-chip" key={t}><TechLogo name={t} size={19} /> {t}</span>
           ))}
         </div>
 
         <div className="hero__cta" style={{ marginTop: 10 }}>
           {p.private ? (
-            <span
-              className="btn"
-              style={{ opacity: 0.5, cursor: 'not-allowed' }}
-              title="Projeto privado por motivos comerciais"
-            >
-              <Github size={16} /> Privado
+            <span className="btn" style={{ opacity: 0.5, cursor: 'not-allowed' }}
+              title={tp.private_title}>
+              <Github size={16} /> {tp.private}
             </span>
-          ) : (
+          ) : p.link ? (
             <>
-              {p.link && (
-                <a className="btn btn--primary" href={p.link} target="_blank" rel="noopener">
-                  <Github size={16} /> Ver código
-                </a>
-              )}
-              <a className="btn btn--ghost" href={p.link || LINKS.github} target="_blank" rel="noopener">
-                <ExternalLink size={16} /> GitHub
+              <a className="btn btn--primary" href={p.link} target="_blank" rel="noopener">
+                <Github size={16} /> {tp.view_code}
+              </a>
+              <a className="btn btn--ghost" href={p.link} target="_blank" rel="noopener">
+                <ExternalLink size={16} /> {tp.github_label}
               </a>
             </>
+          ) : (
+            <a className="btn btn--ghost" href={LINKS.github} target="_blank" rel="noopener">
+              <Github size={16} /> {tp.github_label}
+            </a>
           )}
         </div>
       </Reveal>
@@ -85,18 +90,21 @@ function ProjectRow({ p, i }: { p: Project; i: number }) {
 }
 
 export default function Projects() {
+  const { T } = useLanguage();
+  const tp = T.projects;
+
   return (
     <section>
       <div className="page-hero">
         <div className="wrap">
-          <Reveal><div className="page-hero__crumb"><Link to="/">Home</Link> <span>/</span> Projetos</div></Reveal>
-          <Reveal delay={60}><div className="eyebrow">Trabalho selecionado</div></Reveal>
-          <Reveal delay={120}><h1>Projetos<span className="acc">.</span></h1></Reveal>
+          <Reveal><div className="page-hero__crumb"><Link to="/">{T.nav.home}</Link> <span>/</span> {tp.crumb}</div></Reveal>
+          <Reveal delay={60}><div className="eyebrow">{tp.eyebrow}</div></Reveal>
+          <Reveal delay={120}><h1>{tp.title}<span className="acc">.</span></h1></Reveal>
         </div>
       </div>
 
       <section className="wrap">
-        {PROJECTS.map((p, i) => <ProjectRow p={p} i={i} key={p.id} />)}
+        {PROJECTS.map(p => <ProjectRow p={p} key={p.id} />)}
       </section>
 
       <section className="wrap" style={{ marginTop: 40 }}>
@@ -104,15 +112,13 @@ export default function Projects() {
           <div className="cta-section">
             <div className="cta-section__deco" />
             <div className="cta-section__inner">
-              <div className="eyebrow" style={{ color: 'var(--accent-ink)' }}>Mais no GitHub</div>
-              <h2 className="h2" style={{ maxWidth: '18ch' }}>Veja o resto do meu trabalho</h2>
-              <p style={{ maxWidth: '46ch', color: 'var(--accent-ink)', opacity: .85 }}>
-                Repositórios, experimentos e código aberto. Tem sempre algo novo em construção por lá.
-              </p>
+              <div className="eyebrow" style={{ color: 'var(--accent-ink)' }}>{tp.github_eyebrow}</div>
+              <h2 className="h2" style={{ maxWidth: '18ch' }}>{tp.github_title}</h2>
+              <p style={{ maxWidth: '46ch', color: 'var(--accent-ink)', opacity: .85 }}>{tp.github_desc}</p>
               <div className="hero__cta" style={{ marginTop: 26 }}>
                 <a className="btn" href={LINKS.github} target="_blank" rel="noopener"
                   style={{ background: 'var(--ink)', color: 'var(--bg)' }}>
-                  <Github size={17} /> github.com/PominiGa
+                  <Github size={17} /> {tp.github_btn}
                 </a>
               </div>
             </div>
