@@ -18,7 +18,7 @@ const VALUES = [
 ];
 
 const TIMELINE = [
-  { y: 'Agora · 2026',     t: 'Desenvolvedor FullStack na Softcon',  d: 'Atuando profissionalmente, construindo aplicações backend-first com Java, Spring Boot e camada frontend em React/TypeScript.', now: true },
+  { y: '2026 – presente',  t: 'Desenvolvedor FullStack na Softcon',  d: 'Atuando profissionalmente, construindo e testando aplicações, resolvendo problemas reais e colaborando com o time de desenvolvimento.', now: true },
   { y: '2025 – presente',  t: 'Cybersegurança',                      d: 'Explorando segurança da informação: análise de vulnerabilidades, criptografia, segurança de redes e boas práticas de proteção de sistemas.' },
   { y: '2024 – 2025',      t: 'C# e .NET',                           d: 'Aprendendo C# e o ecossistema .NET para ampliar o repertório backend, desenvolvendo sistemas desktop e APIs.' },
   { y: '2023 – 2024',      t: 'Desenvolvimento Web',                 d: 'Mergulhei no frontend com JavaScript, TypeScript e React, entendendo o ciclo completo do desenvolvimento web moderno.' },
