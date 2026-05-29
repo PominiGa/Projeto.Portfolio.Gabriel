@@ -39,10 +39,6 @@ export default function Skills() {
       </div>
 
       <section className="wrap">
-        <Reveal>
-          <p className="lead" style={{ marginTop: -32, marginBottom: 56, fontSize: 17 }}>{s.lead}</p>
-        </Reveal>
-
         <SecHead eyebrow={s.env_eyebrow} title={s.env_title} desc={s.env_desc} />
 
         {TECH_GROUPS.map((g, gi) => (
