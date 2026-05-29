@@ -228,6 +228,19 @@ export const SKILLS: SkillCat[] = [
   },
 ];
 
+// ─── Ferramentas adicionais (tags na página Skills) ──────────────────────────
+// Para adicionar: coloque uma nova string dentro do array, separada por vírgula.
+// Exemplo: 'Postman', 'Figma', 'Firebase'
+export const TOOLS_EXTRA = [
+  'Automação (Python)',
+  'Bots WhatsApp',
+  'Excel / Google Sheets',
+  'REST APIs',
+  'JWT',
+  'Supabase',
+  'Cybersecurity (estudo)',
+];
+
 export const TECH_GROUPS = [
   { title: 'Linguagens',              items: ['Java', 'JavaScript', 'TypeScript', 'Python', 'C#', 'PHP', 'HTML5', 'CSS3'] },
   { title: 'Frameworks & Libs',       items: ['Spring Boot', 'React', 'Laravel', 'Tailwind CSS'] },

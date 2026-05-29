@@ -3,12 +3,7 @@ import { Link } from 'react-router-dom';
 import { Reveal } from '../shared/Reveal';
 import { SecHead } from '../shared/SecHead';
 import { TechLogo } from '../shared/TechLogo';
-import { TECH_GROUPS } from '../../data';
-
-const TOOLS_EXTRA = [
-  'Automação (Python)', 'Bots WhatsApp', 'Excel / Google Sheets',
-  'REST APIs', 'JWT', 'Supabase', 'Cybersecurity (estudo)',
-];
+import { TECH_GROUPS, TOOLS_EXTRA } from '../../data';
 
 const FEATURED_BADGE = {
   position: 'absolute' as const,
@@ -73,7 +68,7 @@ export default function Skills() {
                       } : { position: 'relative' }}
                     >
                       {isFeatured && (
-                        <span style={FEATURED_BADGE}>★ Principal</span>
+                        <span style={FEATURED_BADGE}>★★★</span>
                       )}
                       <TechLogo name={t} size={44} />
                       <span className="tech-item__label">{t}</span>

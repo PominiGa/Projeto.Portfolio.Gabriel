@@ -23,6 +23,7 @@ const TIMELINE = [
   { y: '2024 – 2025',      t: 'C# e .NET',                           d: 'Aprendendo C# e o ecossistema .NET para ampliar o repertório backend, desenvolvendo sistemas desktop e APIs.' },
   { y: '2023 – 2024',      t: 'Desenvolvimento Web',                 d: 'Mergulhei no frontend com JavaScript, TypeScript e React, entendendo o ciclo completo do desenvolvimento web moderno.' },
   { y: '2023',             t: 'JavaScript',                           d: 'Evolução natural do backend para o frontend — JavaScript abriu as portas para o desenvolvimento web e automações.' },
+  { y: '2023 – presente',  t: 'ADS — UNISAGRADO',                    d: 'Ingresso no curso de Análise e Desenvolvimento de Sistemas em Lençóis Paulista, SP. A faculdade consolidou a base técnica e abriu novos caminhos na área.' },
   { y: '2022 – 2023',      t: 'Java — a base sólida',                d: 'Primeira linguagem de programação. Aprendi lógica, POO e construção de sistemas com Java, que se tornou meu principal stack.' },
 ];
 
