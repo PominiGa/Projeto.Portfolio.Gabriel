@@ -105,7 +105,6 @@ export default function About() {
           {TIMELINE.map((it, i) => (
             <Reveal delay={i * 80} key={i}>
               <div className={'tl-item' + (it.now ? ' is-now' : '')}>
-                <div className="tl-year">{it.y}</div>
                 <h3>{it.t}</h3>
                 <p>{it.d}</p>
               </div>

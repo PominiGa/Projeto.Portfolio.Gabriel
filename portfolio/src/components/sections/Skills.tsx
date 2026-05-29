@@ -1,27 +1,34 @@
-import React from 'react';
-import { Server, Monitor, Database, Wrench, GitBranch, Package, TestTube } from 'lucide-react';
+import { GitBranch, Package, TestTube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Reveal } from '../shared/Reveal';
 import { SecHead } from '../shared/SecHead';
 import { TechLogo } from '../shared/TechLogo';
-import { SKILLS, TECH_GROUPS } from '../../data';
-
-const ICON_MAP: Record<string, React.ElementType> = {
-  server: Server, monitor: Monitor, database: Database, wrench: Wrench,
-};
-
-const LVL_LABEL: Record<number, string> = {
-  5: 'Avançado', 4: 'Proficiente', 3: 'Intermediário', 2: 'Básico', 1: 'Iniciante',
-};
+import { TECH_GROUPS } from '../../data';
 
 const TOOLS_EXTRA = [
   'Automação (Python)', 'Bots WhatsApp', 'Excel / Google Sheets',
   'REST APIs', 'JWT', 'Supabase', 'Cybersecurity (estudo)',
 ];
 
+const FEATURED_BADGE = {
+  position: 'absolute' as const,
+  top: -11,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  background: 'var(--accent)',
+  color: 'var(--accent-ink)',
+  fontSize: 10,
+  fontWeight: 700,
+  padding: '2px 10px',
+  borderRadius: 999,
+  border: '1.5px solid var(--line)',
+  letterSpacing: '.06em',
+  whiteSpace: 'nowrap' as const,
+};
+
 export default function Skills() {
   return (
-    <section id="skills" style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
+    <section style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
       <div className="page-hero">
         <div className="wrap">
           <Reveal><div className="page-hero__crumb"><Link to="/">Home</Link> <span>/</span> Skills</div></Reveal>
@@ -30,54 +37,21 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* Skill bars */}
+      {/* Tech groups with logos */}
       <section className="wrap">
         <Reveal>
           <p className="lead" style={{ marginTop: -32, marginBottom: 56, fontSize: 17 }}>
             Backend é onde moro, mas circulo por toda a stack. Aqui está o conjunto de
-            tecnologias que uso para tirar ideias do papel — sempre crescendo.
+            tecnologias que fazem parte do meu dia a dia — sempre crescendo.
           </p>
         </Reveal>
-        <div className="skills-grid">
-          {SKILLS.map((cat, ci) => {
-            const Ic = ICON_MAP[cat.icon] || Server;
-            return (
-              <Reveal delay={ci * 80} key={cat.cat}>
-                <div className="skill-cat card">
-                  <div className="skill-cat__head">
-                    <span className="skill-cat__ic"><Ic size={22} /></span>
-                    <div>
-                      <h3>{cat.cat}</h3>
-                      <div className="mono-label">{cat.items.length} tecnologias</div>
-                    </div>
-                  </div>
-                  {cat.items.map(it => (
-                    <div className="skill-row" key={it.name}>
-                      <div className="skill-row__top">
-                        <span className="skill-row__name">{it.name}</span>
-                        <span className="skill-row__lvl">{LVL_LABEL[it.lvl]}</span>
-                      </div>
-                      <div className="skill-bar">
-                        {[1,2,3,4,5].map(n => (
-                          <span key={n} className={'skill-bar__seg' + (n <= it.lvl ? ' on' : '')} />
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
-            );
-          })}
-        </div>
-      </section>
 
-      {/* Tech groups with logos */}
-      <section className="wrap" style={{ marginTop: 96 }}>
         <SecHead
           eyebrow="Meu ambiente"
           title="Tudo que eu uso"
-          desc="As ferramentas, linguagens e plataformas que fazem parte do meu dia a dia."
+          desc="As ferramentas, linguagens e plataformas que uso no desenvolvimento."
         />
+
         {TECH_GROUPS.map((g, gi) => (
           <Reveal delay={gi * 60} key={g.title} style={{ marginBottom: 36 }}>
             <div>
@@ -86,12 +60,26 @@ export default function Skills() {
                 {g.title}
               </div>
               <div className="tech-items">
-                {g.items.map(t => (
-                  <div className="tech-item card card--hover" key={t}>
-                    <TechLogo name={t} size={44} />
-                    <span className="tech-item__label">{t}</span>
-                  </div>
-                ))}
+                {g.items.map(t => {
+                  const isFeatured = t === 'Java';
+                  return (
+                    <div
+                      className="tech-item card card--hover"
+                      key={t}
+                      style={isFeatured ? {
+                        borderColor: 'var(--accent)',
+                        boxShadow: '3px 3px 0 var(--accent)',
+                        position: 'relative',
+                      } : { position: 'relative' }}
+                    >
+                      {isFeatured && (
+                        <span style={FEATURED_BADGE}>★ Principal</span>
+                      )}
+                      <TechLogo name={t} size={44} />
+                      <span className="tech-item__label">{t}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </Reveal>
@@ -99,7 +87,7 @@ export default function Skills() {
       </section>
 
       {/* Extra tools cloud */}
-      <section className="wrap" style={{ marginTop: 72 }}>
+      <section className="wrap" style={{ marginTop: 56 }}>
         <SecHead eyebrow="Também trabalho com" title="Ferramentas adicionais" />
         <Reveal>
           <div className="tools-cloud">
@@ -114,9 +102,9 @@ export default function Skills() {
       <section className="wrap" style={{ marginTop: 96 }}>
         <div className="values-grid">
           {[
-            { ic: GitBranch, k: 'Versionamento',  v: 'Git & GitHub no fluxo diário, com commits limpos e organizados.' },
-            { ic: Package,   k: 'Containers',      v: 'Docker para ambientes reproduzíveis do dev à produção.' },
-            { ic: TestTube,  k: 'Boas práticas',   v: 'Código limpo, organizado e focado em manutenibilidade.' },
+            { ic: GitBranch, k: 'Versionamento', v: 'Git & GitHub no fluxo diário, com commits limpos e organizados.' },
+            { ic: Package,   k: 'Containers',    v: 'Docker para ambientes reproduzíveis do dev à produção.' },
+            { ic: TestTube,  k: 'Boas práticas', v: 'Código limpo, organizado e focado em manutenibilidade.' },
           ].map((v, i) => {
             const Ic = v.ic;
             return (

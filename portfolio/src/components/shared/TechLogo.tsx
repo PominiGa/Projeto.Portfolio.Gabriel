@@ -12,6 +12,8 @@ const TECH_SLUG: Record<string, string> = {
   'vs code': 'vscode',
   'datagrip': 'datagrip',
   'insomnia': 'insomnia',
+  'php': 'php',
+  'laravel': 'laravel',
   'python': 'python', 'c#': 'csharp',
   'node.js': 'nodejs', 'nodejs': 'nodejs',
   'mariadb': 'mariadb',
