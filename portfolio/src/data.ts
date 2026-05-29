@@ -229,7 +229,7 @@ export const SKILLS: SkillCat[] = [
 ];
 
 export const TECH_GROUPS = [
-  { title: 'Linguagens',              items: ['Java', 'JavaScript', 'TypeScript', 'Python', 'HTML5', 'CSS3'] },
+  { title: 'Linguagens',              items: ['Java', 'JavaScript', 'TypeScript', 'Python', 'C#', 'HTML5', 'CSS3'] },
   { title: 'Frameworks & Libs',       items: ['Spring Boot', 'React', 'Tailwind CSS'] },
   { title: 'Bancos de Dados',         items: ['PostgreSQL', 'MySQL', 'MongoDB'] },
   { title: 'DevOps & Ferramentas',    items: ['Git', 'GitHub', 'Linux', 'Docker'] },
