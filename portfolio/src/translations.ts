@@ -37,7 +37,7 @@ export const translations = {
       info: [
         { k: 'Nome',            v: 'Gabriel Pomini de Souza' },
         { k: 'Localização',     v: 'Lençóis Paulista — SP' },
-        { k: 'Função',          v: 'Dev FullStack · Backend' },
+        { k: 'Função',          v: 'Dev FullStack' },
         { k: 'Stack principal', v: 'Java · Spring Boot' },
         { k: 'Status',          v: 'Trabalhando na Softcon' },
       ],
@@ -173,7 +173,7 @@ export const translations = {
       info: [
         { k: 'Name',       v: 'Gabriel Pomini de Souza' },
         { k: 'Location',   v: 'Lençóis Paulista — SP' },
-        { k: 'Role',       v: 'FullStack Dev · Backend' },
+        { k: 'Role',       v: 'FullStack Dev' },
         { k: 'Main stack', v: 'Java · Spring Boot' },
         { k: 'Status',     v: 'Working at Softcon' },
       ],
