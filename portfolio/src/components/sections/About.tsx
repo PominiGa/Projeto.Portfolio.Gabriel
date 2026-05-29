@@ -18,10 +18,12 @@ const VALUES = [
 ];
 
 const TIMELINE = [
-  { y: 'Agora',           t: 'Desenvolvedor FullStack',      d: 'Construindo aplicações backend-first com Java, Spring Boot e camada frontend em React/TypeScript.', now: true },
-  { y: '2023 – presente', t: 'ADS — UNISAGRADO',             d: 'Cursando Análise e Desenvolvimento de Sistemas em Lençóis Paulista, SP.' },
-  { y: 'Estudo contínuo', t: 'Aprofundando em arquitetura',  d: 'Microsserviços, mensageria, bancos de dados e boas práticas de design de APIs.' },
-  { y: 'Início',          t: 'Primeiros passos no código',   d: 'O interesse por tecnologia me levou à programação — do primeiro "Hello World" à carreira.' },
+  { y: 'Agora · 2026',     t: 'Desenvolvedor FullStack na Softcon',  d: 'Atuando profissionalmente, construindo aplicações backend-first com Java, Spring Boot e camada frontend em React/TypeScript.', now: true },
+  { y: '2025 – presente',  t: 'Cybersegurança',                      d: 'Explorando segurança da informação: análise de vulnerabilidades, criptografia, segurança de redes e boas práticas de proteção de sistemas.' },
+  { y: '2024 – 2025',      t: 'C# e .NET',                           d: 'Aprendendo C# e o ecossistema .NET para ampliar o repertório backend, desenvolvendo sistemas desktop e APIs.' },
+  { y: '2023 – 2024',      t: 'Desenvolvimento Web',                 d: 'Mergulhei no frontend com JavaScript, TypeScript e React, entendendo o ciclo completo do desenvolvimento web moderno.' },
+  { y: '2023',             t: 'JavaScript',                           d: 'Evolução natural do backend para o frontend — JavaScript abriu as portas para o desenvolvimento web e automações.' },
+  { y: '2022 – 2023',      t: 'Java — a base sólida',                d: 'Primeira linguagem de programação. Aprendi lógica, POO e construção de sistemas com Java, que se tornou meu principal stack.' },
 ];
 
 export default function About() {

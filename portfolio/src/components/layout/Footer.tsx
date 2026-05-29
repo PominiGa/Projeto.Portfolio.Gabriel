@@ -21,9 +21,6 @@ export default function Footer() {
               Desenvolvedor FullStack focado em backend com Java &amp; Spring Boot.
               Construindo software em Lençóis Paulista — SP.
             </p>
-            <div className="badge" style={{ marginTop: 18 }}>
-              <span className="dot-live" /> Disponível para oportunidades
-            </div>
           </div>
 
           <div className="footer__col">
