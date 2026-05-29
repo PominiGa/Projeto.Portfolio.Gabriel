@@ -96,12 +96,6 @@ export default function Projects() {
       </div>
 
       <section className="wrap">
-        <Reveal>
-          <p className="lead" style={{ marginTop: -32, marginBottom: 64, fontSize: 17 }}>
-            Uma seleção de aplicações que representam meu jeito de construir software:
-            backend robusto, frontend afiado e foco em resolver problemas reais.
-          </p>
-        </Reveal>
         {PROJECTS.map((p, i) => <ProjectRow p={p} i={i} key={p.id} />)}
       </section>
 
