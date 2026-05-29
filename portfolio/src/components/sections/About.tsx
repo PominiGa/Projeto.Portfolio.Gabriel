@@ -28,13 +28,9 @@ export default function About() {
       <section className="wrap">
         <div className="about-grid">
           <Reveal className="about-bio">
-            <p className="first-letter" dangerouslySetInnerHTML={{ __html: a.bio[0] }} />
-            <p dangerouslySetInnerHTML={{ __html: a.bio[1] }} />
-            <p>{a.bio[2]}</p>
-            <p>
-              {a.bio[3]}{' '}
-              <Link to="/contato" className="acc" style={{ fontWeight: 700 }}>{a.bio[4]}</Link>.
-            </p>
+            {a.bio.map((p, i) => (
+              <p key={i} className={i === 0 ? 'first-letter' : ''}>{p}</p>
+            ))}
           </Reveal>
 
           <Reveal delay={120} className="about-card card">

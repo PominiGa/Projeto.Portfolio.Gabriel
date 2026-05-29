@@ -29,11 +29,10 @@ export const translations = {
       eyebrow: 'Quem é o dev por trás do código',
       title: 'Sobre mim',
       bio: [
-        'Meu nome é <strong>Gabriel Pomini de Souza</strong>. Moro atualmente em Lençóis Paulista — SP. Sou uma pessoa simples que gosta de aprender coisas novas e enfrentar desafios. Desde sempre tive interesse por tecnologia e programação, o que me levou a buscar uma carreira nessa área.',
-        'Sou um desenvolvedor <strong>Full-Stack</strong> mais focado em <strong class="acc">Backend</strong>, com Java e Spring Boot, mas também tenho experiência com tecnologias Frontend como React e TypeScript.',
-        'Além do desenvolvimento, tenho experiência com montagem e manutenção de computadores, automação com Python, desenvolvimento de bots para WhatsApp e criação de planilhas automatizadas com Excel.',
-        'Estou constantemente estudando e aprimorando minhas habilidades. Estou aberto a novas oportunidades — fique à vontade para visitar a',
-        'seção de contato',
+        'Meu nome é Gabriel Pomini de Souza e moro atualmente em Lençóis Paulista — SP. Desde pequeno sempre fui aquele tipo de pessoa curiosa com tecnologia. Enquanto muita gente só usava o computador, eu queria entender como tudo funcionava, mexia em sistema, desmontava computador, testava coisas e aprendia sozinho na prática (Relaxa que eu sei fazer foi a maneira que eu mais aprendi a fazer algo).',
+        'A verdade é que já passei por quase todas as áreas da TI um pouco. Já mexi com suporte, infraestrutura, manutenção de computadores, automações com Python, bots para WhatsApp, planilhas automatizadas no Excel e tudo que aparecia envolvendo tecnologia eu acabava querendo aprender também. Sempre gostei dessa parte de resolver problemas e encontrar maneiras mais inteligentes de fazer as coisas.',
+        'Sou uma pessoa tranquila, gosto de aprender coisa nova e estou sempre estudando alguma tecnologia diferente — mesmo quando era pra eu estar descansando. Tecnologia sempre foi algo que fez parte da minha vida, não só trabalho.',
+        'E com muito estudo e dedicação essa curiosidade se tornou uma profissão.',
       ],
       info: [
         { k: 'Nome',            v: 'Gabriel Pomini de Souza' },
@@ -166,11 +165,10 @@ export const translations = {
       eyebrow: 'The dev behind the code',
       title: 'About me',
       bio: [
-        'My name is <strong>Gabriel Pomini de Souza</strong>. I currently live in Lençóis Paulista — SP, Brazil. I\'m a straightforward person who enjoys learning new things and taking on challenges. I\'ve always been drawn to technology and programming, which led me to pursue a career in this field.',
-        'I\'m a <strong>Full-Stack</strong> developer focused primarily on <strong class="acc">Backend</strong>, using Java and Spring Boot, but I also have solid experience with Frontend technologies like React and TypeScript.',
-        'Beyond development, I have experience with computer hardware assembly and maintenance, Python automation, WhatsApp bot development, and building automated spreadsheets with Excel.',
-        "I'm constantly studying and improving my skills. I'm open to new opportunities — feel free to visit the",
-        'contact section',
+        "My name is Gabriel Pomini de Souza and I currently live in Lençóis Paulista — SP. Since I was a kid, I was always that curious type when it came to technology. While most people just used computers, I wanted to understand how everything worked — I messed with systems, took apart computers, tested things and learned on my own through practice (Don't worry, figuring things out on my own was the way I learned the most).",
+        "The truth is I've been through almost every area of IT a little bit. I've dealt with support, infrastructure, computer maintenance, Python automations, WhatsApp bots, automated Excel spreadsheets — and whenever something involving technology came up, I ended up wanting to learn it too. I always liked the problem-solving side and finding smarter ways to get things done.",
+        "I'm a calm person, I like learning new things and I'm always studying some different technology — even when I was supposed to be resting. Technology has always been part of my life, not just work.",
+        'And with a lot of study and dedication, that curiosity became a profession.',
       ],
       info: [
         { k: 'Name',       v: 'Gabriel Pomini de Souza' },
