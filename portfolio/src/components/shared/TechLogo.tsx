@@ -10,6 +10,8 @@ const TECH_SLUG: Record<string, string> = {
   'git / github': 'git', 'github': 'github',
   'intellij idea': 'intellij', 'intellij': 'intellij',
   'vs code': 'vscode',
+  'datagrip': 'datagrip',
+  'insomnia': 'insomnia',
   'python': 'python', 'c#': 'csharp',
   'node.js': 'nodejs', 'nodejs': 'nodejs',
   'mariadb': 'mariadb',

@@ -27,12 +27,6 @@ export default function Hero() {
         <div className="hero__grid">
           {/* ── Left ── */}
           <div className="hero__main">
-            <Reveal>
-              <div className="badge">
-                <span className="dot-live" /> Disponível para novos projetos
-              </div>
-            </Reveal>
-
             <Reveal delay={70}>
               <h1 className="h-display hero__title">
                 GABRIEL<br />POMINI<span className="acc">.</span>
@@ -42,7 +36,7 @@ export default function Hero() {
             <Reveal delay={140}>
               <p className="hero__role">
                 <span className="hero__role-tag">{'<dev>'}</span>
-                Desenvolvedor <strong>FullStack</strong> — focado em <strong className="acc">Backend</strong>
+                Desenvolvedor
                 <span className="hero__role-tag">{'</dev>'}</span>
               </p>
             </Reveal>

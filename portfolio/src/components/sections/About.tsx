@@ -8,7 +8,7 @@ const INFO_ROWS = [
   { ic: MapPin,      k: 'Localização',    v: 'Lençóis Paulista — SP' },
   { ic: Code,        k: 'Função',         v: 'Dev FullStack · Backend' },
   { ic: Coffee,      k: 'Stack principal', v: 'Java · Spring Boot' },
-  { ic: CheckCircle, k: 'Status',         v: 'Disponível para projetos' },
+  { ic: CheckCircle, k: 'Status',         v: 'Trabalhando na Softcon' },
 ];
 
 const VALUES = [
