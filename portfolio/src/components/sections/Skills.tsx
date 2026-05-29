@@ -23,7 +23,7 @@ const FEATURED_BADGE = {
 
 export default function Skills() {
   return (
-    <section style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
+    <section>
       <div className="page-hero">
         <div className="wrap">
           <Reveal><div className="page-hero__crumb"><Link to="/">Home</Link> <span>/</span> Skills</div></Reveal>

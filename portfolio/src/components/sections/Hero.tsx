@@ -44,8 +44,7 @@ export default function Hero() {
             <Reveal delay={200}>
               <p className="lead hero__lead">
                 Construo aplicações robustas e escaláveis com Java &amp; Spring Boot,
-                com uma camada frontend afiada em React e TypeScript. Baseado em
-                Lençóis Paulista — SP.
+                com uma camada frontend afiada em React e TypeScript.
               </p>
             </Reveal>
 

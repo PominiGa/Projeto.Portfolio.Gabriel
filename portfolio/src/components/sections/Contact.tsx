@@ -39,7 +39,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contato" style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
+    <section>
       <div className="page-hero">
         <div className="wrap">
           <Reveal><div className="page-hero__crumb"><Link to="/">Home</Link> <span>/</span> Contato</div></Reveal>

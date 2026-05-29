@@ -86,7 +86,7 @@ function ProjectRow({ p, i }: { p: Project; i: number }) {
 
 export default function Projects() {
   return (
-    <section id="projetos" style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
+    <section>
       <div className="page-hero">
         <div className="wrap">
           <Reveal><div className="page-hero__crumb"><Link to="/">Home</Link> <span>/</span> Projetos</div></Reveal>
