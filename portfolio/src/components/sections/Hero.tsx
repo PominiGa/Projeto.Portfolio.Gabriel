@@ -1,151 +1,201 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, MessageCircle, FileText, ArrowDown } from 'lucide-react';
+import { ArrowRight, Mail, Github, Linkedin, Phone, GitBranch, Coffee } from 'lucide-react';
+import { Reveal } from '../shared/Reveal';
+import { LINKS, PROJECTS } from '../../data';
+import { TechLogo } from '../shared/TechLogo';
 import profile from '../../assets/profile.jpg';
-import curriculo from '../../assets/Gabriel Pomini de Souza.pdf';
 
-const socials = [
-  {
-    icon: Github,
-    label: 'GitHub',
-    href: 'https://github.com/PominiGa',
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/gabriel-pomini-43aa731ba/',
-  },
-  {
-    icon: MessageCircle,
-    label: 'WhatsApp',
-    href: 'https://wa.me/5514998604950',
-  },
-];
+const MARQUEE_ITEMS = ['JAVA', 'SPRING BOOT', 'REACT', 'TYPESCRIPT', 'POSTGRESQL', 'PYTHON', 'REST API', 'DOCKER', 'GIT'];
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay },
-});
+function Marquee() {
+  const row = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
+  return (
+    <div className="marq" aria-hidden="true">
+      <div className="marq__track">
+        {row.map((t, i) => (
+          <span className="marq__item" key={i}>{t}<span className="marq__star">✳</span></span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
-    <section className="min-h-screen pt-14 flex items-center bg-cream dark:bg-dark-bg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
+    <section id="home" className="hero">
+      <div className="wrap">
+        <div className="hero__grid">
+          {/* ── Left ── */}
+          <div className="hero__main">
+            <Reveal>
+              <div className="badge">
+                <span className="dot-live" /> Disponível para novos projetos
+              </div>
+            </Reveal>
 
-          {/* ── Left content ── */}
-          <div>
-            <motion.p
-              {...fadeUp(0)}
-              className="font-mono text-xs tracking-widest text-burnt-orange uppercase mb-5"
-            >
-              // DESENVOLVEDOR FULL-STACK
-            </motion.p>
+            <Reveal delay={70}>
+              <h1 className="h-display hero__title">
+                GABRIEL<br />POMINI<span className="acc">.</span>
+              </h1>
+            </Reveal>
 
-            <motion.h1
-              {...fadeUp(0.1)}
-              className="font-mono font-bold text-6xl sm:text-7xl md:text-8xl leading-none text-black dark:text-warm-white mb-6 uppercase"
-            >
-              GABRIEL<br />POMINI.
-            </motion.h1>
+            <Reveal delay={140}>
+              <p className="hero__role">
+                <span className="hero__role-tag">{'<dev>'}</span>
+                Desenvolvedor <strong>FullStack</strong> — focado em <strong className="acc">Backend</strong>
+                <span className="hero__role-tag">{'</dev>'}</span>
+              </p>
+            </Reveal>
 
-            <motion.div
-              {...fadeUp(0.2)}
-              className="w-16 h-0.5 bg-burnt-orange mb-6"
-            />
+            <Reveal delay={200}>
+              <p className="lead hero__lead">
+                Construo aplicações robustas e escaláveis com Java &amp; Spring Boot,
+                com uma camada frontend afiada em React e TypeScript. Baseado em
+                Lençóis Paulista — SP.
+              </p>
+            </Reveal>
 
-            <motion.p
-              {...fadeUp(0.3)}
-              className="text-black/60 dark:text-warm-white/60 text-base sm:text-lg max-w-lg mb-8 leading-relaxed"
-            >
-              Desenvolvedor Full-Stack focado em Backend com Java e Spring Boot,
-              com experiência em React e TypeScript. Cursando Análise e Desenvolvimento
-              de Sistemas na UNISAGRADO — Lençóis Paulista, SP.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div {...fadeUp(0.4)} className="flex flex-wrap gap-3 mb-10">
-              <a
-                href="#projects"
-                className="font-mono text-sm font-bold px-6 py-3 bg-black dark:bg-warm-white text-cream dark:text-dark-bg border-2 border-black dark:border-warm-white brutal-shadow-orange hover-brutal transition-all"
-              >
-                VER PROJETOS →
-              </a>
-              <a
-                href={curriculo}
-                target="_blank"
-                rel="noreferrer"
-                className="font-mono text-sm px-6 py-3 border-2 border-black dark:border-warm-white text-black dark:text-warm-white hover:bg-burnt-orange hover:border-burnt-orange hover:text-white transition-all flex items-center gap-2"
-              >
-                <FileText size={14} />
-                CURRÍCULO
-              </a>
-              <a
-                href="#contact"
-                className="font-mono text-sm px-6 py-3 border-2 border-black/30 dark:border-warm-white/30 text-black/50 dark:text-warm-white/50 hover:border-black hover:text-black dark:hover:border-warm-white dark:hover:text-warm-white transition-all"
-              >
-                CONTATO
-              </a>
-            </motion.div>
-
-            {/* Social Links */}
-            <motion.div
-              {...fadeUp(0.5)}
-              className="flex items-center gap-5"
-            >
-              {socials.map(({ icon: Icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-mono text-xs text-black/40 dark:text-warm-white/40 hover:text-burnt-orange dark:hover:text-burnt-orange transition-colors flex items-center gap-1.5"
-                >
-                  <Icon size={13} />
-                  {label}
+            <Reveal delay={260}>
+              <div className="hero__cta">
+                <a className="btn btn--primary" href="#projetos">
+                  Ver projetos <ArrowRight size={17} />
                 </a>
-              ))}
-            </motion.div>
+                <a className="btn" href="#contato">
+                  <Mail size={17} /> Entrar em contato
+                </a>
+              </div>
+            </Reveal>
+
+            <Reveal delay={320}>
+              <div className="hero__socials">
+                <a href={LINKS.github}   target="_blank" rel="noopener">
+                  <Github size={18} /> GitHub
+                </a>
+                <a href={LINKS.linkedin} target="_blank" rel="noopener">
+                  <Linkedin size={18} /> LinkedIn
+                </a>
+                <a href={LINKS.whatsapp} target="_blank" rel="noopener">
+                  <Phone size={18} /> WhatsApp
+                </a>
+              </div>
+            </Reveal>
           </div>
 
-          {/* ── Right: Photo ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex justify-center lg:justify-end"
-          >
-            <div className="relative">
-              <div className="w-60 h-60 sm:w-72 sm:h-72 lg:w-80 lg:h-80 border-2 border-black dark:border-warm-white brutal-shadow-xl-orange overflow-hidden">
-                <img
-                  src={profile}
-                  alt="Gabriel Pomini de Souza"
-                  className="w-full h-full object-cover object-top"
-                />
+          {/* ── Right: Avatar ── */}
+          <div className="hero__aside">
+            <Reveal delay={180} className="hero__avatar-wrap">
+              <div className="hero__avatar-deco" />
+              <div className="hero__avatar card">
+                <img src={profile} alt="Gabriel Pomini de Souza" />
+                <div className="hero__avatar-label">
+                  <span className="dot-live" /> gabriel.jpg
+                </div>
               </div>
-              {/* Tag badge */}
-              <div className="absolute -bottom-3 -left-3 bg-burnt-orange text-white font-mono text-xs font-bold px-3 py-1.5 border-2 border-black dark:border-warm-white uppercase tracking-widest">
-                FULL-STACK
+              <div className="hero__floaty hero__floaty--1 card">
+                <Coffee size={18} /> <span>∞ cafés</span>
               </div>
-            </div>
-          </motion.div>
+              <div className="hero__floaty hero__floaty--2 card">
+                <GitBranch size={18} /> <span>main</span>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+      <Marquee />
+
+      {/* Stat strip */}
+      <section className="wrap">
+        <div className="stat-strip">
+          {[
+            { k: 'FullStack', v: 'Backend-first' },
+            { k: 'Java + Spring', v: 'Stack principal' },
+            { k: 'React + TS', v: 'Frontend' },
+            { k: 'SP, Brasil', v: 'Lençóis Paulista' },
+          ].map((s, i) => (
+            <Reveal delay={i * 60} key={i} className="stat-strip__item">
+              <div className="stat-strip__k">{s.k}</div>
+              <div className="stat-strip__v">{s.v}</div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Featured projects peek */}
+      <section className="wrap" style={{ marginTop: 110 }}>
+        <div className="peek-head">
+          <div className="sec-head" style={{ marginBottom: 0 }}>
+            <Reveal><div className="eyebrow">Trabalho selecionado</div></Reveal>
+            <Reveal delay={60}><h2 className="h2">Projetos em destaque</h2></Reveal>
+          </div>
+          <Reveal>
+            <a className="btn btn--ghost" href="#projetos">
+              Todos <ArrowRight size={16} />
+            </a>
+          </Reveal>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="mt-16 hidden sm:flex items-center gap-2"
-        >
-          <div className="w-8 h-px bg-black/20 dark:bg-warm-white/20" />
-          <span className="font-mono text-xs text-black/25 dark:text-warm-white/25 tracking-widest">
-            SCROLL
-          </span>
-          <ArrowDown size={11} className="text-black/25 dark:text-warm-white/25 animate-bounce" />
-        </motion.div>
-      </div>
+        <div className="peek-grid">
+          {PROJECTS.slice(0, 3).map((p, i) => (
+            <Reveal delay={i * 80} key={p.id}>
+              <a
+                className="card card--hover peek-card"
+                href={p.private ? undefined : p.link || '#projetos'}
+                target={!p.private && p.link ? '_blank' : undefined}
+                rel="noopener"
+                onClick={p.private ? e => { e.preventDefault(); } : undefined}
+                style={{ cursor: p.private ? 'default' : 'pointer' }}
+              >
+                <div className="peek-card__banner" style={!p.image ? { background: p.bg } : {}}>
+                  {p.image
+                    ? <img src={p.image} alt={p.name} />
+                    : <span className="peek-card__glyph">{p.glyph}</span>
+                  }
+                  <span className="peek-card__idx">{p.num}</span>
+                  {p.private && <span className="peek-card__priv">Privado</span>}
+                </div>
+                <div className="peek-card__body">
+                  <h3 className="h3">{p.name}</h3>
+                  <p>{p.tagline}</p>
+                  <div className="stack-logos" style={{ marginTop: 14 }}>
+                    {p.stack.slice(0, 4).map(t => (
+                      <span className="stack-chip" key={t}>
+                        <TechLogo name={t} size={18} /> {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="wrap" style={{ marginTop: 120 }}>
+        <Reveal>
+          <div className="cta-section">
+            <div className="cta-section__deco" />
+            <div className="cta-section__inner">
+              <div className="eyebrow" style={{ color: 'var(--accent-ink)' }}>Vamos conversar</div>
+              <h2 className="h2" style={{ maxWidth: '16ch' }}>Tem um projeto em mente?</h2>
+              <p style={{ maxWidth: '44ch', color: 'var(--accent-ink)', opacity: .85 }}>
+                Estou aberto a novas oportunidades e desafios. Bora construir algo bom juntos.
+              </p>
+              <div className="hero__cta" style={{ marginTop: 28 }}>
+                <a className="btn" href="#contato" style={{ background: 'var(--ink)', color: 'var(--bg)' }}>
+                  <Mail size={17} /> Iniciar conversa
+                </a>
+                <a
+                  className="btn btn--ghost"
+                  href={`mailto:${LINKS.email}`}
+                  style={{ borderColor: 'var(--accent-ink)', color: 'var(--accent-ink)' }}
+                >
+                  Copiar e-mail
+                </a>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </section>
     </section>
   );
 }

@@ -1,156 +1,134 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { Server, Monitor, Database, Wrench, GitBranch, Package, TestTube } from 'lucide-react';
+import { Reveal } from '../shared/Reveal';
+import { SecHead } from '../shared/SecHead';
+import { TechLogo } from '../shared/TechLogo';
+import { SKILLS, TECH_GROUPS } from '../../data';
 
-interface SkillCategory {
-  id: string;
-  label: string;
-  skills: string[];
-}
-
-const categories: SkillCategory[] = [
-  {
-    id: 'frontend',
-    label: 'FRONTEND',
-    skills: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'TailwindCSS', 'Framer Motion'],
-  },
-  {
-    id: 'backend',
-    label: 'BACKEND',
-    skills: ['Java', 'Spring Boot', 'C#', 'Node.js', 'Python'],
-  },
-  {
-    id: 'database',
-    label: 'DATABASE',
-    skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'MariaDB', 'Supabase'],
-  },
-  {
-    id: 'tools',
-    label: 'FERRAMENTAS',
-    skills: ['Git', 'GitHub', 'Linux', 'Excel', 'Google Sheets', 'Swing'],
-  },
-  {
-    id: 'studying',
-    label: 'ESTUDANDO',
-    skills: ['Cybersecurity', 'Segurança de Redes', 'Criptografia', 'Docker'],
-  },
-];
-
-const techIcons: Record<string, string> = {
-  React: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-  TypeScript: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-  JavaScript: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-  HTML5: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-  CSS3: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
-  Java: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-  'Spring Boot': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg',
-  'C#': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg',
-  'Node.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-  Python: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-  PostgreSQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-  MySQL: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-  MongoDB: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-  Git: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-  GitHub: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-  Linux: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg',
-  Docker: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
+const ICON_MAP: Record<string, React.ElementType> = {
+  server: Server, monitor: Monitor, database: Database, wrench: Wrench,
 };
 
-const inViewAnim = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.5, delay },
-});
+const LVL_LABEL: Record<number, string> = {
+  5: 'Avançado', 4: 'Proficiente', 3: 'Intermediário', 2: 'Básico', 1: 'Iniciante',
+};
+
+const TOOLS_EXTRA = [
+  'Automação (Python)', 'Bots WhatsApp', 'Excel / Google Sheets',
+  'REST APIs', 'JWT', 'Supabase', 'Cybersecurity (estudo)',
+];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 sm:py-32 bg-off-white dark:bg-dark-card border-y-2 border-black/10 dark:border-warm-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="skills" style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
+      <div className="page-hero">
+        <div className="wrap">
+          <Reveal><div className="page-hero__crumb">Home / Skills</div></Reveal>
+          <Reveal delay={60}><div className="eyebrow">Ferramentas do ofício</div></Reveal>
+          <Reveal delay={120}><h1>Skills<span className="acc">.</span></h1></Reveal>
+        </div>
+      </div>
 
-        {/* Section Header */}
-        <motion.div {...inViewAnim()} className="mb-16">
-          <p className="font-mono text-xs text-burnt-orange tracking-widest mb-2">[03]</p>
-          <h2 className="font-mono font-bold text-4xl sm:text-5xl text-black dark:text-warm-white uppercase">
-            HABILIDADES
-          </h2>
-          <div className="mt-4 w-16 h-0.5 bg-burnt-orange" />
-        </motion.div>
+      {/* Skill bars */}
+      <section className="wrap">
+        <Reveal>
+          <p className="lead" style={{ marginTop: -32, marginBottom: 56, fontSize: 17 }}>
+            Backend é onde moro, mas circulo por toda a stack. Aqui está o conjunto de
+            tecnologias que uso para tirar ideias do papel — sempre crescendo.
+          </p>
+        </Reveal>
+        <div className="skills-grid">
+          {SKILLS.map((cat, ci) => {
+            const Ic = ICON_MAP[cat.icon] || Server;
+            return (
+              <Reveal delay={ci * 80} key={cat.cat}>
+                <div className="skill-cat card">
+                  <div className="skill-cat__head">
+                    <span className="skill-cat__ic"><Ic size={22} /></span>
+                    <div>
+                      <h3>{cat.cat}</h3>
+                      <div className="mono-label">{cat.items.length} tecnologias</div>
+                    </div>
+                  </div>
+                  {cat.items.map(it => (
+                    <div className="skill-row" key={it.name}>
+                      <div className="skill-row__top">
+                        <span className="skill-row__name">{it.name}</span>
+                        <span className="skill-row__lvl">{LVL_LABEL[it.lvl]}</span>
+                      </div>
+                      <div className="skill-bar">
+                        {[1,2,3,4,5].map(n => (
+                          <span key={n} className={'skill-bar__seg' + (n <= it.lvl ? ' on' : '')} />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
 
-        {/* Categories grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {categories.map((cat, catIdx) => (
-            <motion.div
-              key={cat.id}
-              {...inViewAnim(catIdx * 0.08)}
-              className={`border-2 p-5 ${
-                cat.id === 'studying'
-                  ? 'border-burnt-orange/50 bg-burnt-orange/5'
-                  : 'border-black dark:border-warm-white bg-cream dark:bg-dark-bg'
-              }`}
-            >
-              {/* Category header */}
-              <div className="flex items-center justify-between mb-4">
-                <p className="font-mono text-xs tracking-widest text-burnt-orange font-bold">
-                  {cat.label}
-                </p>
-                {cat.id === 'studying' && (
-                  <span className="font-mono text-xs text-burnt-orange/60 border border-burnt-orange/30 px-1.5 py-0.5">
-                    WIP
-                  </span>
-                )}
+      {/* Tech groups with logos */}
+      <section className="wrap" style={{ marginTop: 96 }}>
+        <SecHead
+          eyebrow="Meu ambiente"
+          title="Tudo que eu uso"
+          desc="As ferramentas, linguagens e plataformas que fazem parte do meu dia a dia."
+        />
+        {TECH_GROUPS.map((g, gi) => (
+          <Reveal delay={gi * 60} key={g.title} style={{ marginBottom: 36 }}>
+            <div>
+              <div className="tech-group__title">
+                <span className="tech-group__bar" />
+                {g.title}
               </div>
-
-              {/* Skills list */}
-              <div className="flex flex-wrap gap-2">
-                {cat.skills.map(skill => (
-                  <div
-                    key={skill}
-                    className="flex items-center gap-1.5 border border-black/15 dark:border-warm-white/15 px-2 py-1 text-xs bg-off-white dark:bg-dark-card group hover:border-burnt-orange transition-colors"
-                    title={skill}
-                  >
-                    {techIcons[skill] ? (
-                      <img
-                        src={techIcons[skill]}
-                        alt={skill}
-                        className="w-3.5 h-3.5 object-contain"
-                        style={
-                          skill === 'GitHub'
-                            ? { filter: 'invert(0)' }
-                            : undefined
-                        }
-                      />
-                    ) : (
-                      <span className="w-3.5 h-3.5 flex items-center justify-center text-burnt-orange font-mono font-bold text-xs">
-                        ✦
-                      </span>
-                    )}
-                    <span className="font-mono text-xs text-black/70 dark:text-warm-white/70 group-hover:text-burnt-orange transition-colors">
-                      {skill}
-                    </span>
+              <div className="tech-items">
+                {g.items.map(t => (
+                  <div className="tech-item card card--hover" key={t}>
+                    <TechLogo name={t} size={44} />
+                    <span className="tech-item__label">{t}</span>
                   </div>
                 ))}
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </Reveal>
+        ))}
+      </section>
 
-        {/* Marquee strip */}
-        <motion.div
-          {...inViewAnim(0.4)}
-          className="mt-14 overflow-hidden border-t border-b border-black/10 dark:border-warm-white/10 py-3"
-        >
-          <div className="flex gap-8 animate-marquee whitespace-nowrap">
-            {[...Object.keys(techIcons), ...Object.keys(techIcons)].map((tech, i) => (
-              <span
-                key={`${tech}-${i}`}
-                className="font-mono text-xs tracking-widest text-black/25 dark:text-warm-white/25 uppercase"
-              >
-                {tech} ·
-              </span>
+      {/* Extra tools cloud */}
+      <section className="wrap" style={{ marginTop: 72 }}>
+        <SecHead eyebrow="Também trabalho com" title="Ferramentas adicionais" />
+        <Reveal>
+          <div className="tools-cloud">
+            {TOOLS_EXTRA.map(t => (
+              <span className="tag" key={t}>{t}</span>
             ))}
           </div>
-        </motion.div>
-      </div>
+        </Reveal>
+      </section>
+
+      {/* Values strip */}
+      <section className="wrap" style={{ marginTop: 96 }}>
+        <div className="values-grid">
+          {[
+            { ic: GitBranch, k: 'Versionamento',  v: 'Git & GitHub no fluxo diário, com commits limpos e organizados.' },
+            { ic: Package,   k: 'Containers',      v: 'Docker para ambientes reproduzíveis do dev à produção.' },
+            { ic: TestTube,  k: 'Boas práticas',   v: 'Código limpo, organizado e focado em manutenibilidade.' },
+          ].map((v, i) => {
+            const Ic = v.ic;
+            return (
+              <Reveal delay={i * 90} key={i}>
+                <div className="value-card card card--hover">
+                  <span className="value-card__ic"><Ic size={22} /></span>
+                  <h3 className="h3">{v.k}</h3>
+                  <p>{v.v}</p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
     </section>
   );
 }

@@ -1,105 +1,86 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
-const navLinks = [
-  { label: 'SOBRE', href: '#about' },
-  { label: 'PROJETOS', href: '#projects' },
-  { label: 'HABILIDADES', href: '#skills' },
-  { label: 'SERVIÇOS', href: '#services' },
-  { label: 'CONTATO', href: '#contact' },
+const NAV = [
+  { n: '01', label: 'Home',     href: '#home' },
+  { n: '02', label: 'Sobre',    href: '#sobre' },
+  { n: '03', label: 'Projetos', href: '#projetos' },
+  { n: '04', label: 'Skills',   href: '#skills' },
+  { n: '05', label: 'Contato',  href: '#contato' },
 ];
 
 export default function Navbar() {
-  const { theme, toggleTheme } = useTheme();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggle } = useTheme();
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('#home');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }, [open]);
+
+  useEffect(() => {
+    const ids = NAV.map(l => l.href.slice(1));
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) setActive('#' + e.target.id);
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+    ids.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 bg-cream dark:bg-dark-bg border-b-2 ${
-        scrolled
-          ? 'border-black dark:border-warm-white'
-          : 'border-black/20 dark:border-warm-white/20'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-        {/* Logo */}
-        <a
-          href="#"
-          className="font-mono font-bold text-base tracking-wider group"
-          aria-label="Topo"
-        >
-          <span className="border-2 border-black dark:border-warm-white px-2 py-0.5 text-black dark:text-warm-white group-hover:bg-burnt-orange group-hover:border-burnt-orange group-hover:text-white transition-all">
-            GP
-          </span>
-        </a>
+    <>
+      <nav className="nav">
+        <div className="nav__inner">
+          <a className="brand" href="#home" onClick={() => setOpen(false)}>
+            <span className="brand__mark">GP</span>
+            <span>Gabriel Pomini<span className="brand__sub"> / dev</span></span>
+          </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8" aria-label="Principal">
-          {navLinks.map(link => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="font-mono text-xs tracking-widest text-black/50 dark:text-warm-white/50 hover:text-burnt-orange dark:hover:text-burnt-orange transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+          <div className="nav__links">
+            {NAV.map(l => (
+              <a
+                key={l.href}
+                href={l.href}
+                className={'nav__link' + (active === l.href ? ' is-active' : '')}
+              >
+                <span className="nav__num">{l.n}</span>{l.label}
+              </a>
+            ))}
+          </div>
 
-        {/* Actions */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={toggleTheme}
-            aria-label="Alternar tema"
-            className="w-8 h-8 border-2 border-black dark:border-warm-white flex items-center justify-center text-black dark:text-warm-white hover:bg-burnt-orange hover:border-burnt-orange hover:text-white dark:hover:bg-burnt-orange dark:hover:border-burnt-orange dark:hover:text-white transition-all"
-          >
-            {theme === 'dark' ? <Sun size={13} /> : <Moon size={13} />}
-          </button>
-
-          <button
-            onClick={() => setMenuOpen(v => !v)}
-            aria-label="Menu"
-            className="md:hidden w-8 h-8 border-2 border-black dark:border-warm-white flex items-center justify-center text-black dark:text-warm-white"
-          >
-            {menuOpen ? <X size={13} /> : <Menu size={13} />}
-          </button>
+          <div className="nav__right">
+            <button className="tgl" onClick={toggle} aria-label="Alternar tema">
+              <span className="tgl__knob">
+                {theme === 'light'
+                  ? <Sun size={13} strokeWidth={2.5} />
+                  : <Moon size={13} strokeWidth={2.5} />}
+              </span>
+            </button>
+            <button className="nav__burger" onClick={() => setOpen(o => !o)} aria-label="Menu">
+              {open ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Dropdown */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden overflow-hidden bg-cream dark:bg-dark-bg border-t-2 border-black dark:border-warm-white"
+      <div className={'mmenu' + (open ? ' is-open' : '')}>
+        {NAV.map(l => (
+          <a
+            key={l.href}
+            href={l.href}
+            className={active === l.href ? 'acc' : ''}
+            onClick={() => setOpen(false)}
           >
-            <div className="flex flex-col px-4 py-4 gap-4">
-              {navLinks.map(link => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="font-mono text-sm tracking-widest text-black dark:text-warm-white hover:text-burnt-orange dark:hover:text-burnt-orange transition-colors py-1"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-    </header>
+            <span className="nav__num">{l.n}</span>{l.label}
+          </a>
+        ))}
+      </div>
+    </>
   );
 }

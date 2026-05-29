@@ -1,37 +1,22 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 type Theme = 'light' | 'dark';
+interface ThemeContextType { theme: Theme; toggle: () => void; }
 
-interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
-}
-
-const ThemeContext = createContext<ThemeContextType>({
-  theme: 'dark',
-  toggleTheme: () => {},
-});
+const ThemeContext = createContext<ThemeContextType>({ theme: 'light', toggle: () => {} });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    const saved = localStorage.getItem('portfolio-theme') as Theme | null;
-    return saved ?? 'dark';
-  });
+  const [theme, setTheme] = useState<Theme>(() =>
+    (localStorage.getItem('gp-theme') as Theme) || 'light'
+  );
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    localStorage.setItem('portfolio-theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('gp-theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'));
-
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggle: () => setTheme(t => t === 'light' ? 'dark' : 'light') }}>
       {children}
     </ThemeContext.Provider>
   );
