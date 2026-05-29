@@ -7,6 +7,7 @@ import imgRedeOticas      from './assets/rededasoticas.png';
 import imgVilanova        from './assets/vilanovaveiculos.png';
 import imgSistemaSmash    from './assets/sistemaSmash.png';
 import imgConstruelo      from './assets/projetoConstruelo.jpeg';
+import imgFarmacia        from './assets/projetofarmacia.png';
 import curriculo          from './assets/Gabriel Pomini de Souza.pdf';
 
 export const LINKS = {
@@ -76,7 +77,23 @@ export const PROJECTS: Project[] = [
     link: '', private: true,
   },
   {
-    id: 'sistema-construelo', num: '04', name: 'Sistema Construelo',
+    id: 'farmacia', num: '04', name: 'Site Farmácia',
+    tagline: 'Website institucional para farmácia com catálogo de produtos e serviços.',
+    image: imgFarmacia, bg: 'linear-gradient(135deg,#1F6B4F,#2E9C73)', glyph: '◓',
+    year: '2024', role: 'Frontend', type: 'Site Institucional',
+    stack: ['React', 'TypeScript'],
+    desc: 'Website profissional para farmácia com páginas institucionais, catálogo de produtos e informações de serviços. Design limpo e responsivo focado na experiência do cliente.',
+    features: [
+      'Catálogo de produtos e serviços da farmácia',
+      'Páginas institucionais e informações de contato',
+      'Design responsivo para todos os dispositivos',
+      'Identidade visual alinhada com a marca',
+    ],
+    metrics: [['React', 'framework'], ['TypeScript', 'linguagem'], ['Responsive', 'design']],
+    link: '', private: true,
+  },
+  {
+    id: 'sistema-construelo', num: '05', name: 'Sistema Construelo',
     tagline: 'ERP personalizado para empresa de construção civil.',
     image: imgConstruelo, bg: 'linear-gradient(135deg,#B0892C,#D4AB3E)', glyph: '⬡',
     year: '2024', role: 'FullStack', type: 'Sistema ERP',
@@ -92,7 +109,7 @@ export const PROJECTS: Project[] = [
     link: '', private: true,
   },
   {
-    id: 'dashboard-covid', num: '05', name: 'Dashboard COVID',
+    id: 'dashboard-covid', num: '06', name: 'Dashboard COVID',
     tagline: 'Dashboard interativo de análise de dados da pandemia de COVID-19.',
     image: imgDashboard, bg: 'linear-gradient(135deg,#C2521C,#E0732E)', glyph: '◓',
     year: '2023', role: 'Desenvolvedor', type: 'Dashboard',
@@ -109,7 +126,7 @@ export const PROJECTS: Project[] = [
     private: false,
   },
   {
-    id: 'smash-burguer', num: '06', name: 'Smash Burguer LP',
+    id: 'smash-burguer', num: '07', name: 'Smash Burguer LP',
     tagline: 'Landing page moderna para hamburgueria com cardápio interativo.',
     image: imgSmash, bg: 'linear-gradient(135deg,#B0892C,#D4AB3E)', glyph: '⟁',
     year: '2023', role: 'Frontend', type: 'Landing Page',
@@ -126,7 +143,7 @@ export const PROJECTS: Project[] = [
     private: false,
   },
   {
-    id: 'sistema-smash', num: '07', name: 'Sistema Smash',
+    id: 'sistema-smash', num: '08', name: 'Sistema Smash',
     tagline: 'Sistema desktop de gestão interna para a Smash Burguer.',
     image: imgSistemaSmash, bg: 'linear-gradient(135deg,#2B4C8C,#3E6BC4)', glyph: '◗',
     year: '2023', role: 'Backend', type: 'Sistema Desktop',
@@ -142,7 +159,7 @@ export const PROJECTS: Project[] = [
     link: '', private: true,
   },
   {
-    id: 'meu-dia', num: '08', name: 'Meu Dia X',
+    id: 'meu-dia', num: '09', name: 'Meu Dia X',
     tagline: 'Aplicativo web para organização e acompanhamento de atividades diárias.',
     image: imgMeuDia, bg: 'linear-gradient(135deg,#1F6B4F,#2E9C73)', glyph: '◗',
     year: '2023', role: 'Frontend', type: 'Web App',
@@ -159,7 +176,7 @@ export const PROJECTS: Project[] = [
     private: false,
   },
   {
-    id: 'portfolio', num: '09', name: 'Portfólio',
+    id: 'portfolio', num: '10', name: 'Portfólio',
     tagline: 'Este portfólio, construído com React, TypeScript e design retrô-minimalista.',
     image: imgPortfolio, bg: 'linear-gradient(135deg,#6B3FA0,#8B5CC4)', glyph: '❖',
     year: '2024', role: 'Frontend', type: 'Portfólio',
