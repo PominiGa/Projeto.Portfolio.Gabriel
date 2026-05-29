@@ -1,4 +1,5 @@
 import { Calendar, User, Check, Github, ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Reveal } from '../shared/Reveal';
 import { SecHead } from '../shared/SecHead';
 import { TechLogo } from '../shared/TechLogo';
@@ -88,7 +89,7 @@ export default function Projects() {
     <section id="projetos" style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
       <div className="page-hero">
         <div className="wrap">
-          <Reveal><div className="page-hero__crumb">Home / Projetos</div></Reveal>
+          <Reveal><div className="page-hero__crumb"><Link to="/">Home</Link> <span>/</span> Projetos</div></Reveal>
           <Reveal delay={60}><div className="eyebrow">Trabalho selecionado</div></Reveal>
           <Reveal delay={120}><h1>Projetos<span className="acc">.</span></h1></Reveal>
         </div>

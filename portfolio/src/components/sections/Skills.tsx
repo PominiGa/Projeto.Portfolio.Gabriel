@@ -1,4 +1,6 @@
+import React from 'react';
 import { Server, Monitor, Database, Wrench, GitBranch, Package, TestTube } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Reveal } from '../shared/Reveal';
 import { SecHead } from '../shared/SecHead';
 import { TechLogo } from '../shared/TechLogo';
@@ -22,7 +24,7 @@ export default function Skills() {
     <section id="skills" style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
       <div className="page-hero">
         <div className="wrap">
-          <Reveal><div className="page-hero__crumb">Home / Skills</div></Reveal>
+          <Reveal><div className="page-hero__crumb"><Link to="/">Home</Link> <span>/</span> Skills</div></Reveal>
           <Reveal delay={60}><div className="eyebrow">Ferramentas do ofício</div></Reveal>
           <Reveal delay={120}><h1>Skills<span className="acc">.</span></h1></Reveal>
         </div>

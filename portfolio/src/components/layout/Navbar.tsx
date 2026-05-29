@@ -1,56 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const NAV = [
-  { n: '01', label: 'Home',     href: '#home' },
-  { n: '02', label: 'Sobre',    href: '#sobre' },
-  { n: '03', label: 'Projetos', href: '#projetos' },
-  { n: '04', label: 'Skills',   href: '#skills' },
-  { n: '05', label: 'Contato',  href: '#contato' },
+  { n: '01', label: 'Home',     to: '/' },
+  { n: '02', label: 'Sobre',    to: '/sobre' },
+  { n: '03', label: 'Projetos', to: '/projetos' },
+  { n: '04', label: 'Skills',   to: '/skills' },
+  { n: '05', label: 'Contato',  to: '/contato' },
 ];
 
 export default function Navbar() {
   const { theme, toggle } = useTheme();
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState('#home');
-
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : '';
-  }, [open]);
-
-  useEffect(() => {
-    const ids = NAV.map(l => l.href.slice(1));
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) setActive('#' + e.target.id);
-        });
-      },
-      { rootMargin: '-40% 0px -55% 0px' }
-    );
-    ids.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
       <nav className="nav">
         <div className="nav__inner">
-          <a className="brand" href="#home" onClick={() => setOpen(false)}>
+          <Link className="brand" to="/" onClick={() => setOpen(false)}>
             <span className="brand__mark">GP</span>
             <span>Gabriel Pomini<span className="brand__sub"> / dev</span></span>
-          </a>
+          </Link>
 
           <div className="nav__links">
             {NAV.map(l => (
-              <a
-                key={l.href}
-                href={l.href}
-                className={'nav__link' + (active === l.href ? ' is-active' : '')}
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.to === '/'}
+                className={({ isActive }) => 'nav__link' + (isActive ? ' is-active' : '')}
               >
                 <span className="nav__num">{l.n}</span>{l.label}
-              </a>
+              </NavLink>
             ))}
           </div>
 
@@ -71,14 +54,15 @@ export default function Navbar() {
 
       <div className={'mmenu' + (open ? ' is-open' : '')}>
         {NAV.map(l => (
-          <a
-            key={l.href}
-            href={l.href}
-            className={active === l.href ? 'acc' : ''}
+          <NavLink
+            key={l.to}
+            to={l.to}
+            end={l.to === '/'}
+            className={({ isActive }) => isActive ? 'acc' : ''}
             onClick={() => setOpen(false)}
           >
             <span className="nav__num">{l.n}</span>{l.label}
-          </a>
+          </NavLink>
         ))}
       </div>
     </>

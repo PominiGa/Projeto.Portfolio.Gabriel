@@ -1,11 +1,13 @@
-import imgDashboard    from './assets/Dashboard.png';
-import imgConcessionaria from './assets/concessionaria.png';
-import imgPortfolio    from './assets/portfolio.png';
-import imgSmash        from './assets/Smash.png';
-import imgMeuDia       from './assets/MeuDia.png';
-import imgRedeOticas   from './assets/rededasoticas.png';
-import imgVilanova     from './assets/vilanovaveiculos.png';
-import curriculo       from './assets/Gabriel Pomini de Souza.pdf';
+import imgDashboard      from './assets/Dashboard.png';
+import imgConcessionaria  from './assets/concessionaria.png';
+import imgPortfolio       from './assets/portfolio.png';
+import imgSmash           from './assets/Smash.png';
+import imgMeuDia          from './assets/MeuDia.png';
+import imgRedeOticas      from './assets/rededasoticas.png';
+import imgVilanova        from './assets/vilanovaveiculos.png';
+import imgSistemaSmash    from './assets/sistemaSmash.png';
+import imgConstruelo      from './assets/projetoConstruelo.jpeg';
+import curriculo          from './assets/Gabriel Pomini de Souza.pdf';
 
 export const LINKS = {
   github:    'https://github.com/PominiGa',
@@ -76,7 +78,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'sistema-construelo', num: '04', name: 'Sistema Construelo',
     tagline: 'ERP personalizado para empresa de construção civil.',
-    image: null, bg: 'linear-gradient(135deg,#B0892C,#D4AB3E)', glyph: '⬡',
+    image: imgConstruelo, bg: 'linear-gradient(135deg,#B0892C,#D4AB3E)', glyph: '⬡',
     year: '2024', role: 'FullStack', type: 'Sistema ERP',
     stack: ['React', 'TypeScript', 'PostgreSQL'],
     desc: 'Sistema ERP desenvolvido para empresa de construção civil. Controle de obras, materiais, funcionários e faturamento em uma plataforma integrada e eficiente com foco em produtividade.',
@@ -126,7 +128,7 @@ export const PROJECTS: Project[] = [
   {
     id: 'sistema-smash', num: '07', name: 'Sistema Smash',
     tagline: 'Sistema desktop de gestão interna para a Smash Burguer.',
-    image: null, bg: 'linear-gradient(135deg,#2B4C8C,#3E6BC4)', glyph: '◗',
+    image: imgSistemaSmash, bg: 'linear-gradient(135deg,#2B4C8C,#3E6BC4)', glyph: '◗',
     year: '2023', role: 'Backend', type: 'Sistema Desktop',
     stack: ['Java', 'Swing', 'MySQL'],
     desc: 'Sistema de gerenciamento interno para a hamburgueria Smash Burguer. Interface desktop Java Swing com controle de pedidos, estoque e caixa, integrado ao banco MySQL.',

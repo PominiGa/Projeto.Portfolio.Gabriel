@@ -1,4 +1,5 @@
 import { ArrowRight, Mail, Github, Linkedin, Phone, GitBranch, Coffee } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Reveal } from '../shared/Reveal';
 import { LINKS, PROJECTS } from '../../data';
 import { TechLogo } from '../shared/TechLogo';
@@ -21,7 +22,7 @@ function Marquee() {
 
 export default function Hero() {
   return (
-    <section id="home" className="hero">
+    <section className="hero">
       <div className="wrap">
         <div className="hero__grid">
           {/* ── Left ── */}
@@ -56,12 +57,12 @@ export default function Hero() {
 
             <Reveal delay={260}>
               <div className="hero__cta">
-                <a className="btn btn--primary" href="#projetos">
+                <Link className="btn btn--primary" to="/projetos">
                   Ver projetos <ArrowRight size={17} />
-                </a>
-                <a className="btn" href="#contato">
+                </Link>
+                <Link className="btn" to="/contato">
                   <Mail size={17} /> Entrar em contato
-                </a>
+                </Link>
               </div>
             </Reveal>
 
@@ -106,10 +107,10 @@ export default function Hero() {
       <section className="wrap">
         <div className="stat-strip">
           {[
-            { k: 'FullStack', v: 'Backend-first' },
-            { k: 'Java + Spring', v: 'Stack principal' },
-            { k: 'React + TS', v: 'Frontend' },
-            { k: 'SP, Brasil', v: 'Lençóis Paulista' },
+            { k: 'FullStack',      v: 'Backend-first'   },
+            { k: 'Java + Spring',  v: 'Stack principal'  },
+            { k: 'React + TS',     v: 'Frontend'         },
+            { k: 'SP, Brasil',     v: 'Lençóis Paulista' },
           ].map((s, i) => (
             <Reveal delay={i * 60} key={i} className="stat-strip__item">
               <div className="stat-strip__k">{s.k}</div>
@@ -119,7 +120,7 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* Featured projects peek */}
+      {/* Featured peek */}
       <section className="wrap" style={{ marginTop: 110 }}>
         <div className="peek-head">
           <div className="sec-head" style={{ marginBottom: 0 }}>
@@ -127,23 +128,16 @@ export default function Hero() {
             <Reveal delay={60}><h2 className="h2">Projetos em destaque</h2></Reveal>
           </div>
           <Reveal>
-            <a className="btn btn--ghost" href="#projetos">
+            <Link className="btn btn--ghost" to="/projetos">
               Todos <ArrowRight size={16} />
-            </a>
+            </Link>
           </Reveal>
         </div>
 
         <div className="peek-grid">
           {PROJECTS.slice(0, 3).map((p, i) => (
             <Reveal delay={i * 80} key={p.id}>
-              <a
-                className="card card--hover peek-card"
-                href={p.private ? undefined : p.link || '#projetos'}
-                target={!p.private && p.link ? '_blank' : undefined}
-                rel="noopener"
-                onClick={p.private ? e => { e.preventDefault(); } : undefined}
-                style={{ cursor: p.private ? 'default' : 'pointer' }}
-              >
+              <Link className="card card--hover peek-card" to="/projetos">
                 <div className="peek-card__banner" style={!p.image ? { background: p.bg } : {}}>
                   {p.image
                     ? <img src={p.image} alt={p.name} />
@@ -163,7 +157,7 @@ export default function Hero() {
                     ))}
                   </div>
                 </div>
-              </a>
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -181,9 +175,9 @@ export default function Hero() {
                 Estou aberto a novas oportunidades e desafios. Bora construir algo bom juntos.
               </p>
               <div className="hero__cta" style={{ marginTop: 28 }}>
-                <a className="btn" href="#contato" style={{ background: 'var(--ink)', color: 'var(--bg)' }}>
+                <Link className="btn" to="/contato" style={{ background: 'var(--ink)', color: 'var(--bg)' }}>
                   <Mail size={17} /> Iniciar conversa
-                </a>
+                </Link>
                 <a
                   className="btn btn--ghost"
                   href={`mailto:${LINKS.email}`}

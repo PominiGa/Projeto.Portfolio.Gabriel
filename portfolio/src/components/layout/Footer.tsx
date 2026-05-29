@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import { Github, Linkedin, Phone, FileText } from 'lucide-react';
 import { LINKS } from '../../data';
 
 const NAV = [
-  { label: 'Home',     href: '#home' },
-  { label: 'Sobre',    href: '#sobre' },
-  { label: 'Projetos', href: '#projetos' },
-  { label: 'Skills',   href: '#skills' },
-  { label: 'Contato',  href: '#contato' },
+  { label: 'Home',     to: '/' },
+  { label: 'Sobre',    to: '/sobre' },
+  { label: 'Projetos', to: '/projetos' },
+  { label: 'Skills',   to: '/skills' },
+  { label: 'Contato',  to: '/contato' },
 ];
 
 export default function Footer() {
@@ -27,7 +28,7 @@ export default function Footer() {
 
           <div className="footer__col">
             <h4>Navegação</h4>
-            {NAV.map(l => <a key={l.href} href={l.href}>{l.label}</a>)}
+            {NAV.map(l => <Link key={l.to} to={l.to}>{l.label}</Link>)}
           </div>
 
           <div className="footer__col">
@@ -41,19 +42,13 @@ export default function Footer() {
             <h4>Contato direto</h4>
             <a href={`mailto:${LINKS.email}`}>{LINKS.email}</a>
             <a href={LINKS.whatsapp} target="_blank" rel="noopener">+55 (14) 99860-4950</a>
-            <a href={LINKS.curriculo} target="_blank" rel="noopener" style={{ display:'flex', alignItems:'center', gap:6 }}>
+            <a href={LINKS.curriculo} target="_blank" rel="noopener" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <FileText size={14} /> Currículo PDF
             </a>
             <div className="soc" style={{ marginTop: 16 }}>
-              <a href={LINKS.github}   target="_blank" rel="noopener" aria-label="GitHub">
-                <Github size={18} />
-              </a>
-              <a href={LINKS.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn">
-                <Linkedin size={18} />
-              </a>
-              <a href={LINKS.whatsapp} target="_blank" rel="noopener" aria-label="WhatsApp">
-                <Phone size={18} />
-              </a>
+              <a href={LINKS.github}   target="_blank" rel="noopener" aria-label="GitHub"><Github size={18} /></a>
+              <a href={LINKS.linkedin} target="_blank" rel="noopener" aria-label="LinkedIn"><Linkedin size={18} /></a>
+              <a href={LINKS.whatsapp} target="_blank" rel="noopener" aria-label="WhatsApp"><Phone size={18} /></a>
             </div>
           </div>
         </div>

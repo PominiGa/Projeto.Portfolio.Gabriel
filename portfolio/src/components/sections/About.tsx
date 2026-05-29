@@ -1,23 +1,24 @@
 import { User, MapPin, Code, Coffee, CheckCircle, Layers, Rocket, Puzzle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Reveal } from '../shared/Reveal';
 import { SecHead } from '../shared/SecHead';
 
 const INFO_ROWS = [
-  { ic: User,         k: 'Nome',          v: 'Gabriel Pomini de Souza' },
-  { ic: MapPin,       k: 'Localização',   v: 'Lençóis Paulista — SP' },
-  { ic: Code,         k: 'Função',        v: 'Dev FullStack · Backend' },
-  { ic: Coffee,       k: 'Stack principal', v: 'Java · Spring Boot' },
-  { ic: CheckCircle,  k: 'Status',        v: 'Disponível para projetos' },
+  { ic: User,        k: 'Nome',           v: 'Gabriel Pomini de Souza' },
+  { ic: MapPin,      k: 'Localização',    v: 'Lençóis Paulista — SP' },
+  { ic: Code,        k: 'Função',         v: 'Dev FullStack · Backend' },
+  { ic: Coffee,      k: 'Stack principal', v: 'Java · Spring Boot' },
+  { ic: CheckCircle, k: 'Status',         v: 'Disponível para projetos' },
 ];
 
 const VALUES = [
-  { ic: Layers,  t: 'Backend sólido',       d: 'Arquiteturas limpas e escaláveis com Java e Spring Boot, pensando em manutenção a longo prazo.' },
-  { ic: Rocket,  t: 'Aprendizado contínuo', d: 'Sempre estudando algo novo. Cada projeto é uma chance de evoluir como profissional.' },
-  { ic: Puzzle,  t: 'Resolver problemas',   d: 'Gosto de desafios. Quebrar um problema complexo em partes simples é o que me move.' },
+  { ic: Layers, t: 'Backend sólido',       d: 'Arquiteturas limpas e escaláveis com Java e Spring Boot, pensando em manutenção a longo prazo.' },
+  { ic: Rocket, t: 'Aprendizado contínuo', d: 'Sempre estudando algo novo. Cada projeto é uma chance de evoluir como profissional.' },
+  { ic: Puzzle, t: 'Resolver problemas',   d: 'Gosto de desafios. Quebrar um problema complexo em partes simples é o que me move.' },
 ];
 
 const TIMELINE = [
-  { y: 'Agora',          t: 'Desenvolvedor FullStack',       d: 'Construindo aplicações backend-first com Java, Spring Boot e camada frontend em React/TypeScript.', now: true },
+  { y: 'Agora',           t: 'Desenvolvedor FullStack',      d: 'Construindo aplicações backend-first com Java, Spring Boot e camada frontend em React/TypeScript.', now: true },
   { y: '2023 – presente', t: 'ADS — UNISAGRADO',             d: 'Cursando Análise e Desenvolvimento de Sistemas em Lençóis Paulista, SP.' },
   { y: 'Estudo contínuo', t: 'Aprofundando em arquitetura',  d: 'Microsserviços, mensageria, bancos de dados e boas práticas de design de APIs.' },
   { y: 'Início',          t: 'Primeiros passos no código',   d: 'O interesse por tecnologia me levou à programação — do primeiro "Hello World" à carreira.' },
@@ -25,17 +26,19 @@ const TIMELINE = [
 
 export default function About() {
   return (
-    <section id="sobre" style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
-      {/* Page hero */}
+    <section>
       <div className="page-hero">
         <div className="wrap">
-          <Reveal><div className="page-hero__crumb">Home / Sobre</div></Reveal>
+          <Reveal>
+            <div className="page-hero__crumb">
+              <Link to="/">Home</Link> <span>/</span> Sobre
+            </div>
+          </Reveal>
           <Reveal delay={60}><div className="eyebrow">Quem é o dev por trás do código</div></Reveal>
           <Reveal delay={120}><h1>Sobre mim<span className="acc">.</span></h1></Reveal>
         </div>
       </div>
 
-      {/* Bio grid */}
       <section className="wrap">
         <div className="about-grid">
           <Reveal className="about-bio">
@@ -56,9 +59,9 @@ export default function About() {
               e criação de planilhas automatizadas com Excel.
             </p>
             <p>
-              Estou constantemente estudando e aprimorando minhas habilidades para me
-              tornar um profissional cada vez melhor. Estou aberto a novas oportunidades
-              e desafios que me permitam crescer e contribuir com projetos interessantes.
+              Estou constantemente estudando e aprimorando minhas habilidades. Estou aberto
+              a novas oportunidades — fique à vontade para visitar a{' '}
+              <Link to="/contato" className="acc" style={{ fontWeight: 700 }}>seção de contato</Link>.
             </p>
           </Reveal>
 
@@ -76,7 +79,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
       <section className="wrap" style={{ marginTop: 96 }}>
         <SecHead eyebrow="O que me move" title="Princípios" desc="A forma como encaro o trabalho e a tecnologia no dia a dia." />
         <div className="values-grid">
@@ -95,7 +97,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Timeline */}
       <section className="wrap" style={{ marginTop: 96 }}>
         <SecHead eyebrow="Trajetória" title="A jornada até aqui" />
         <div className="timeline">

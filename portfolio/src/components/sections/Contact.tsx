@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Mail, Phone, Linkedin, Github, MessageCircle, ArrowUpRight, Send, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 import { Reveal } from '../shared/Reveal';
 import { LINKS } from '../../data';
@@ -41,7 +42,7 @@ export default function Contact() {
     <section id="contato" style={{ paddingTop: 'clamp(64px,8vw,120px)' }}>
       <div className="page-hero">
         <div className="wrap">
-          <Reveal><div className="page-hero__crumb">Home / Contato</div></Reveal>
+          <Reveal><div className="page-hero__crumb"><Link to="/">Home</Link> <span>/</span> Contato</div></Reveal>
           <Reveal delay={60}><div className="eyebrow">Vamos conversar</div></Reveal>
           <Reveal delay={120}><h1>Contato<span className="acc">.</span></h1></Reveal>
         </div>
