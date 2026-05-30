@@ -8,6 +8,7 @@ import imgVilanova        from './assets/vilanovaveiculos.png';
 import imgSistemaSmash    from './assets/sistemaSmash.png';
 import imgConstruelo      from './assets/projetoConstruelo.jpeg';
 import imgFarmacia        from './assets/projetofarmacia.png';
+import imgCenterpesca     from './assets/centerpesca.png';
 import curriculo          from './assets/Gabriel Pomini de Souza.pdf';
 
 export const LINKS = {
@@ -157,7 +158,31 @@ export const PROJECTS: Project[] = [
     link: 'https://github.com/PominiGa/Sim-aceito', private: false,
   },
   {
-    id: 'portfolio', num: '10', name: 'Portfólio',
+    id: 'centerpesca', num: '10', name: 'Centerpesca',
+    tagline: 'Site de apresentação institucional para empresa do ramo de pesca.',
+    tagline_en: 'Institutional presentation website for a fishing industry company.',
+    image: imgCenterpesca, bg: 'linear-gradient(135deg,#1F6B4F,#2E9C73)', glyph: '◓',
+    year: '2025', role: 'Frontend', role_en: 'Frontend', type: 'Site Institucional', type_en: 'Institutional Site',
+    stack: ['React'],
+    desc: 'Site de apresentação desenvolvido em React para a Centerpesca. Página institucional moderna e responsiva com seções de serviços, sobre a empresa e contato.',
+    desc_en: 'Presentation website built with React for Centerpesca. Modern and responsive institutional page with sections for services, about the company, and contact.',
+    features: [
+      'Página institucional moderna e responsiva',
+      'Seções de apresentação da empresa e serviços',
+      'Design alinhado com a identidade visual da marca',
+      'Otimizado para diferentes dispositivos',
+    ],
+    features_en: [
+      'Modern and responsive institutional page',
+      'Company and services presentation sections',
+      'Design aligned with the brand visual identity',
+      'Optimized for different devices',
+    ],
+    metrics: [['React', 'framework'], ['Responsive', 'design'], ['Institucional', 'site']],
+    link: '', private: true,
+  },
+  {
+    id: 'portfolio', num: '11', name: 'Portfólio',
     tagline: 'Este portfólio, construído com React, TypeScript e design retrô-minimalista.',
     tagline_en: 'This portfolio, built with React, TypeScript and a retro-minimalist design.',
     image: imgPortfolio, bg: 'linear-gradient(135deg,#6B3FA0,#8B5CC4)', glyph: '❖',
