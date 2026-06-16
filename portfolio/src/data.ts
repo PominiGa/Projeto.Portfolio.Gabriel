@@ -9,6 +9,7 @@ import imgSistemaSmash    from './assets/sistemaSmash.png';
 import imgConstruelo      from './assets/projetoConstruelo.jpeg';
 import imgFarmacia        from './assets/projetofarmacia.png';
 import imgCenterpesca     from './assets/centerpesca.png';
+import imgTroncal         from './assets/troncal.png';
 import curriculo          from './assets/Gabriel Pomini de Souza.pdf';
 
 export const LINKS = {
@@ -27,7 +28,9 @@ export interface Project {
   desc: string; desc_en: string;
   features: string[]; features_en: string[];
   metrics: [string, string][];
-  link: string; private: boolean;
+  link: string;       // GitHub / repositório público
+  site?: string;      // URL do site ao vivo (para manutenção: edite aqui)
+  private: boolean;   // true = código fechado
 }
 
 export const PROJECTS: Project[] = [
@@ -155,7 +158,7 @@ export const PROJECTS: Project[] = [
     features: ['Registro e organização de atividades diárias','Interface limpa e fácil de usar','Persistência de dados via localStorage','Design responsivo para mobile e desktop'],
     features_en: ['Daily activity registration and organization','Clean and easy-to-use interface','Data persistence via localStorage','Responsive design for mobile and desktop'],
     metrics: [['JavaScript', 'linguagem'], ['TypeScript', 'tipagem'], ['LocalStorage', 'dados']],
-    link: 'https://github.com/PominiGa/Sim-aceito', private: false,
+    link: 'https://github.com/PominiGa/Sim-aceito', site: 'https://meudiax.vercel.app', private: false,
   },
   {
     id: 'centerpesca', num: '10', name: 'Centerpesca',
@@ -182,7 +185,31 @@ export const PROJECTS: Project[] = [
     link: '', private: true,
   },
   {
-    id: 'portfolio', num: '11', name: 'Portfólio',
+    id: 'troncal', num: '11', name: 'Troncal',
+    tagline: 'Site institucional moderno desenvolvido em React.',
+    tagline_en: 'Modern institutional website built with React.',
+    image: imgTroncal, bg: 'linear-gradient(135deg,#2B4C8C,#3E6BC4)', glyph: '⬡',
+    year: '2025', role: 'Frontend', role_en: 'Frontend', type: 'Site Institucional', type_en: 'Institutional Site',
+    stack: ['React'],
+    desc: 'Site institucional desenvolvido em React. Design responsivo e moderno com foco na apresentação da empresa e experiência do usuário.',
+    desc_en: 'Institutional website built with React. Responsive and modern design focused on company presentation and user experience.',
+    features: [
+      'Página institucional responsiva',
+      'Design moderno alinhado com a marca',
+      'Otimizado para diferentes dispositivos',
+      'Publicado e disponível no ar',
+    ],
+    features_en: [
+      'Responsive institutional page',
+      'Modern design aligned with the brand',
+      'Optimized for different devices',
+      'Published and live online',
+    ],
+    metrics: [['React', 'framework'], ['Responsive', 'design'], ['Vercel', 'deploy']],
+    link: '', site: 'https://troncal.vercel.app', private: true,
+  },
+  {
+    id: 'portfolio', num: '12', name: 'Portfólio',
     tagline: 'Este portfólio, construído com React, TypeScript e design retrô-minimalista.',
     tagline_en: 'This portfolio, built with React, TypeScript and a retro-minimalist design.',
     image: imgPortfolio, bg: 'linear-gradient(135deg,#6B3FA0,#8B5CC4)', glyph: '❖',

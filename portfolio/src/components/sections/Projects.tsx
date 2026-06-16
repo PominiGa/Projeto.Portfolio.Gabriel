@@ -64,25 +64,21 @@ function ProjectRow({ p }: { p: Project }) {
         </div>
 
         <div className="hero__cta" style={{ marginTop: 10 }}>
-          {p.private ? (
+          {p.site && (
+            <a className="btn btn--primary" href={p.site} target="_blank" rel="noopener">
+              <ExternalLink size={16} /> {tp.view_site}
+            </a>
+          )}
+          {!p.private && p.link ? (
+            <a className="btn btn--ghost" href={p.link} target="_blank" rel="noopener">
+              <Github size={16} /> {tp.view_code}
+            </a>
+          ) : p.private && !p.site ? (
             <span className="btn" style={{ opacity: 0.5, cursor: 'not-allowed' }}
               title={tp.private_title}>
               <Github size={16} /> {tp.private}
             </span>
-          ) : p.link ? (
-            <>
-              <a className="btn btn--primary" href={p.link} target="_blank" rel="noopener">
-                <Github size={16} /> {tp.view_code}
-              </a>
-              <a className="btn btn--ghost" href={p.link} target="_blank" rel="noopener">
-                <ExternalLink size={16} /> {tp.github_label}
-              </a>
-            </>
-          ) : (
-            <a className="btn btn--ghost" href={LINKS.github} target="_blank" rel="noopener">
-              <Github size={16} /> {tp.github_label}
-            </a>
-          )}
+          ) : null}
         </div>
       </Reveal>
     </div>

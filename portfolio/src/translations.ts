@@ -75,6 +75,8 @@ export const translations = {
       github_btn: 'github.com/PominiGa',
       year_label: 'Ano',
       role_label: 'Função',
+      view_site: 'Ver site',
+      site_label: 'Site',
     },
     skills: {
       crumb: 'Skills',
@@ -211,6 +213,8 @@ export const translations = {
       github_btn: 'github.com/PominiGa',
       year_label: 'Year',
       role_label: 'Role',
+      view_site: 'View site',
+      site_label: 'Site',
     },
     skills: {
       crumb: 'Skills',
