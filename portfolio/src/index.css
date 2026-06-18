@@ -166,6 +166,7 @@ h1,h2,h3 { line-height: 1.05; font-weight: 800; letter-spacing: -0.02em; }
 }
 .nav__inner { width:100%; max-width: var(--maxw); margin:0 auto; padding:0 28px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
 .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.02em; font-size:16px; }
+.brand__logo { height:36px; width:auto; object-fit:contain; display:block; }
 .brand__mark {
   width:34px; height:34px; display:grid; place-items:center; border:var(--b2) solid var(--line);
   background: var(--accent); color: var(--accent-ink); border-radius:var(--r); font-weight:800; font-size:14px;
