@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import { useLanguage } from '../../context/LanguageContext';
-
+import logo from '../../assets/logo.png';
 export default function Navbar() {
   const { theme, toggle: toggleTheme } = useTheme();
   const { lang, toggleLang, T } = useLanguage();
@@ -22,6 +22,7 @@ export default function Navbar() {
       <nav className="nav">
         <div className="nav__inner">
           <Link className="brand" to="/" onClick={() => setOpen(false)}>
+            <img src={logo} alt="" className="brand__logo" />
             <span>Gabriel Pomini<span className="brand__sub"> / dev</span></span>
           </Link>
 
