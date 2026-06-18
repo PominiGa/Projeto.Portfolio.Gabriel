@@ -5,6 +5,7 @@ import { LINKS, PROJECTS } from '../../data';
 import { TechLogo } from '../shared/TechLogo';
 import { useLanguage } from '../../context/LanguageContext';
 import profile from '../../assets/profile.jpg';
+import logo from '../../assets/logo.png';
 
 const MARQUEE_ITEMS = ['JAVA', 'SPRING BOOT', 'REACT', 'TYPESCRIPT', 'POSTGRESQL', 'PYTHON', 'REST API', 'DOCKER', 'GIT'];
 
@@ -31,6 +32,10 @@ export default function Hero() {
         <div className="hero__grid">
           {/* ── Left ── */}
           <div className="hero__main">
+            <Reveal delay={0}>
+              <img src={logo} alt="Gabriel Pomini" className="hero__logo" />
+            </Reveal>
+
             <Reveal delay={70}>
               <h1 className="h-display hero__title">
                 GABRIEL<br />POMINI<span className="acc">.</span>
