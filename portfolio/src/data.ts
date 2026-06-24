@@ -274,7 +274,7 @@ export const TOOLS_EXTRA = [
 export const TECH_GROUPS = [
   { title: 'Linguagens',              items: ['Java', 'JavaScript', 'TypeScript', 'Python', 'C#', 'PHP', 'HTML5', 'CSS3'] },
   { title: 'Frameworks & Libs',       items: ['Spring Boot', 'React', 'Laravel', 'Tailwind CSS'] },
-  { title: 'Bancos de Dados',         items: ['PostgreSQL', 'MySQL', 'MongoDB'] },
+  { title: 'Bancos de Dados',         items: ['PostgreSQL', 'MySQL', 'MongoDB', 'MSSQL'] },
   { title: 'DevOps & Ferramentas',    items: ['Git', 'GitHub', 'Linux', 'Docker'] },
   { title: 'IDEs & Ambiente',         items: ['VS Code', 'IntelliJ IDEA', 'DataGrip', 'Insomnia'] },
 ];

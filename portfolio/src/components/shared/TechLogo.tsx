@@ -6,6 +6,7 @@ const TECH_SLUG: Record<string, string> = {
   'spring boot': 'spring', 'spring': 'spring',
   'tailwind css': 'tailwindcss', 'tailwind': 'tailwindcss',
   'postgresql': 'postgresql', 'mysql': 'mysql', 'mongodb': 'mongodb', 'redis': 'redis',
+  'mssql': 'microsoftsqlserver', 'microsoft sql server': 'microsoftsqlserver',
   'linux': 'linux', 'docker': 'docker', 'git': 'git',
   'git / github': 'git', 'github': 'github',
   'intellij idea': 'intellij', 'intellij': 'intellij',
