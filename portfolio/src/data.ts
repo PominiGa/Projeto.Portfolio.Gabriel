@@ -206,7 +206,7 @@ export const PROJECTS: Project[] = [
       'Published and live online',
     ],
     metrics: [['React', 'framework'], ['Responsive', 'design'], ['Vercel', 'deploy']],
-    link: '', site: 'https://troncal.vercel.app', private: true,
+    link: '', site: 'https://troncalmotos.com', private: true,
   },
   {
     id: 'portfolio', num: '12', name: 'Portfólio',
