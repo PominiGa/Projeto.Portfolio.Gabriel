@@ -10,6 +10,7 @@ import imgConstruelo      from './assets/projetoConstruelo.jpeg';
 import imgFarmacia        from './assets/projetofarmacia.png';
 import imgCenterpesca     from './assets/centerpesca.png';
 import imgTroncal         from './assets/troncal.png';
+import imgLpagenda        from './assets/lpagenda.png';
 import curriculo          from './assets/Gabriel Pomini de Souza.pdf';
 
 export const LINKS = {
@@ -209,7 +210,21 @@ export const PROJECTS: Project[] = [
     link: '', site: 'https://troncalmotors.com', private: true,
   },
   {
-    id: 'portfolio', num: '12', name: 'Portfólio',
+    id: 'lpagenda', num: '12', name: 'LP Agenda',
+    tagline: 'SaaS de agendamentos online para negócios em Lençóis Paulista - SP.',
+    tagline_en: 'Online appointment scheduling SaaS for businesses in Lençóis Paulista, Brazil.',
+    image: imgLpagenda, bg: 'linear-gradient(135deg,#C2521C,#E0732E)', glyph: '⟁',
+    year: '2026', role: 'FullStack', role_en: 'FullStack', type: 'Sistema SaaS', type_en: 'SaaS System',
+    stack: ['React', 'Supabase', 'AbacatePay', 'Resend'],
+    desc: 'Sistema SaaS de agendamentos desenvolvido para negócios locais da cidade de Lençóis Paulista - SP. Permite que clientes agendem horários online, com pagamentos processados via AbacatePay e notificações por e-mail via Resend, tudo com backend Supabase.',
+    desc_en: 'SaaS appointment scheduling system built for local businesses in Lençóis Paulista, Brazil. Lets clients book time slots online, with payments processed via AbacatePay and email notifications via Resend, backed by a Supabase backend.',
+    features: ['Agendamento online de horários em tempo real','Pagamentos integrados via AbacatePay','Notificações e confirmações automáticas por e-mail (Resend)','Painel administrativo para gestão de negócios e agenda'],
+    features_en: ['Real-time online time slot booking','Integrated payments via AbacatePay','Automated email notifications and confirmations (Resend)','Admin panel for business and schedule management'],
+    metrics: [['React', 'frontend'], ['Supabase', 'backend'], ['SaaS', 'agendamentos']],
+    link: '', site: 'https://lpagenda.com', private: true,
+  },
+  {
+    id: 'portfolio', num: '13', name: 'Portfólio',
     tagline: 'Este portfólio, construído com React, TypeScript e design retrô-minimalista.',
     tagline_en: 'This portfolio, built with React, TypeScript and a retro-minimalist design.',
     image: imgPortfolio, bg: 'linear-gradient(135deg,#6B3FA0,#8B5CC4)', glyph: '❖',
