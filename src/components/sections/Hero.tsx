@@ -8,6 +8,8 @@ import profile from '../../assets/profile.jpg';
 
 const MARQUEE_ITEMS = ['JAVA', 'SPRING BOOT', 'REACT', 'TYPESCRIPT', 'POSTGRESQL', 'PYTHON', 'REST API', 'DOCKER', 'GIT'];
 
+const FEATURED_IDS = ['troncal', 'sistema-smash', 'lpagenda'];
+
 function Marquee() {
   const row = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
   return (
@@ -124,7 +126,7 @@ export default function Hero() {
         </div>
 
         <div className="peek-grid">
-          {PROJECTS.slice(0, 3).map((p, i) => (
+          {FEATURED_IDS.map(id => PROJECTS.find(p => p.id === id)!).map((p, i) => (
             <Reveal delay={i * 80} key={p.id}>
               <Link className="card card--hover peek-card" to="/projetos">
                 <div className="peek-card__banner" style={!p.image ? { background: p.bg } : {}}>
